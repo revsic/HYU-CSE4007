@@ -25,7 +25,9 @@ public class NQueens {
     }
 
     public void setPos(int x, int y) {
-        matrix[y][x] = true;
+        if (matrix != null) {
+            matrix[y][x] = true;
+        }
     }
 
     public bool isSolved() {
