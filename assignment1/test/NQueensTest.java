@@ -79,6 +79,7 @@ public class NQueensTest implements Testable {
             { { 0, 1 }, { 1, 2 }, { 2, 0 }, { 3, 3 } }, // lowerhalf rightdown
             { { 0, 2 }, { 1, 0 }, { 2, 1 }, { 3, 3 } }, // upperhalf rightdown
             { { 0, 3 }, { 1, 1 }, { 2, 0 }, { 3, 2 } }, // upperhalf leftdown
+            { { 0, 3 }, { 1, 0 }, { 2, 2 }, { 3, 1 } }, // lowerhalf leftdown
         };
 
         int[][][] success = {
