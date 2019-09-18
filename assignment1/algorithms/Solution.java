@@ -1,6 +1,6 @@
 package assignment1.algorithms;
 
-import assignment1.NQueens;
+import assignment1.problem.NQueens;
 
 
 public interface Solution {
