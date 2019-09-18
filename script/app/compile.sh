@@ -1,0 +1,1 @@
+javac -d classes $1/Application.java
