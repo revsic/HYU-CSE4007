@@ -53,7 +53,7 @@ public class NQueens {
                     if (i >= j) {
                         rightdown[i - j] += 1;
                     } else {
-                        rightdown[size + j - i] += 1;
+                        rightdown[size + j - i - 1] += 1;
                     }
 
                     if (size - i - 1 >= j) {
