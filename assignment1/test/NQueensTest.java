@@ -9,10 +9,9 @@ import assignment1.NQueens;
 public class NQueensTest implements Testable {
     @Override
     public boolean test() {
-        if (!positionSetterGetterTest()) {
-            return false;
-        }
-        return true;
+        return positionSetterGetterTest()
+            && cloneTest()
+            && isSolvedTest();
     }
 
     private boolean positionSetterGetterTest() {
@@ -43,5 +42,13 @@ public class NQueensTest implements Testable {
         }
 
         return true;
-    } 
+    }
+
+    private boolean cloneTest() {
+        return true;
+    }
+
+    private boolean isSolvedTest() {
+        return true;
+    }
 }
