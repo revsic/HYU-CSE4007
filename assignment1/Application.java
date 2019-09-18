@@ -9,10 +9,17 @@ import assignment1.algorithms.Solution;
 
 
 public class Application {
-    public static String solve(Solution solution, int size) {
+    public static void main(String[] args) {
+        System.out.println(">DFS\n" + solve(new DFS(), 7));
+    }
+
+    public static Info solve(Solution solution, int size) {
+        long start = System.currentTimeMillis();
         int[][] res = solution.solve(size);
+        long end = System.currentTimeMillis();
+
         if (res == null) {
-            return "No solution";
+            return new Info("No solution", 0);
         }
 
         Arrays.sort(res, new Comparator<int[]>() {
@@ -22,12 +29,24 @@ public class Application {
             }
         });
 
-        return Stream.of(res)
+        String msg = Stream.of(res)
             .map(x -> String.valueOf(x[1]))
             .collect(Collectors.joining(" "));
+        return new Info(msg, (end - start) / 1000.0);
     }
+    
+    static class Info {
+        String msg;
+        double elapsed;
 
-    public static void main(String[] args) {
-        System.out.println(solve(new DFS(), 5));
+        Info(String msg, double elapsed) {
+            this.msg = msg;
+            this.elapsed = elapsed;
+        }
+
+        @Override
+        public String toString() {
+            return "Location : " + msg + "\nTime : " + elapsed;
+        }
     }
 }
