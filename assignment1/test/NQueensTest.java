@@ -3,7 +3,7 @@ package assignment1.test;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
-import assignment1.NQueens;
+import assignment1.problem.NQueens;
 
 
 public class NQueensTest implements Testable {
