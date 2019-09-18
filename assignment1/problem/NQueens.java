@@ -1,4 +1,4 @@
-package assignment1;
+package assignment1.problem;
 
 
 public class NQueens {
