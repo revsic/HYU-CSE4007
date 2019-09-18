@@ -1,7 +1,10 @@
+package assignment1;
+
+
 public class NQueens {
     private int size;
 
-    private bool[][] matrix;
+    private boolean[][] matrix;
 
     public NQueens() {
         this(0);
@@ -10,7 +13,7 @@ public class NQueens {
     public NQueens(int size) {
         this.size = size;
         if (size > 0) {
-            matrix = new bool[size][size];
+            matrix = new boolean[size][size];
         }
     }
 
@@ -30,11 +33,11 @@ public class NQueens {
         }
     }
 
-    public bool getPos(int x, int y) {
+    public boolean getPos(int x, int y) {
         return matrix[y][x];
     }
 
-    public bool isSolved() {
+    public boolean isSolved() {
         int[] columns = new int[size];
         int[] rows = new int[size];
         
