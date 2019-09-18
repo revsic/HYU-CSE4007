@@ -30,6 +30,10 @@ public class NQueens {
         }
     }
 
+    public bool getPos(int x, int y) {
+        return matrix[y][x];
+    }
+
     public bool isSolved() {
         int[] columns = new int[size];
         int[] rows = new int[size];
