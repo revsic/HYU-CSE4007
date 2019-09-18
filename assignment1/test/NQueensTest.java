@@ -15,15 +15,13 @@ public class NQueensTest implements Testable {
     }
 
     private boolean positionSetterGetterTest() {
-        NQueens nqueens = new NQueens(4);
-        
-        nqueens.setPos(1, 1);
-        nqueens.setPos(3, 2);
+        int[][] positionList = { { 1, 1 }, { 3, 2 } };
 
-        int[][] positionList = {
-            { 1, 1 },
-            { 3, 2 }
-        };
+        NQueens nqueens = new NQueens(4);
+        for (int i = 0; i < positionList.length; ++i) {
+            int[] pos = positionList[i];
+            nqueens.setPos(pos[0], pos[1]);
+        }
 
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -45,6 +43,28 @@ public class NQueensTest implements Testable {
     }
 
     private boolean cloneTest() {
+        int[][] positionList = { { 1, 1 }, { 3, 2 } };
+
+        NQueens nQueens = new NQueens(4);
+        for (int i = 0; i < positionList.length; ++i) {
+            int[] pos = positionList[i];
+            nQueens.setPos(pos[0], pos[1]);
+        }
+
+        NQueens cloned = nQueens.clone();
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 4; ++j) {
+                final int[] pos = { i, j };
+                boolean value = cloned.getPos(i, j);
+                boolean existance = Stream.of(positionList)
+                                          .anyMatch(x -> Arrays.equals(pos, x));
+                if (value != existance) {
+                    System.out.println("clone failure");
+                    return false;
+                }
+            }
+        }
+
         return true;
     }
 
