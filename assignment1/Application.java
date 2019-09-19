@@ -12,9 +12,16 @@ import assignment1.algorithms.Solution;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(">DFS\n" + solve(new DFS(), 7) + "\n");
-        System.out.println(">BFS\n" + solve(new BFS(), 7) + "\n");
-        System.out.println(">DFID\n" + solve(new DFID(), 7) + "\n");
+        if (args.length < 2) {
+            System.out.println("usage: [size of board: INT] [path: STRING]");
+            return;
+        }
+
+        int size = Integer.parseInt(args[0]);
+        
+        System.out.println(">DFS\n" + solve(new DFS(), size) + "\n");
+        System.out.println(">BFS\n" + solve(new BFS(), size) + "\n");
+        System.out.println(">DFID\n" + solve(new DFID(), size) + "\n");
     }
 
     public static Info solve(Solution solution, int size) {
@@ -22,7 +29,7 @@ public class Application {
         int[][] res = solution.solve(size);
         long end = System.currentTimeMillis();
 
-        if (res == null) {
+        if (res == null || res.length != size) {
             return new Info("No solution", 0);
         }
 
