@@ -44,9 +44,12 @@ public class NQueens {
         int[] rightdown = new int[size * 2 - 1];
         int[] leftdown = new int[size * 2 - 1];
 
+        int num = 0;
         for (int i = 0; i < size; ++i) {
             for (int j = 0; j < size; ++j) {
                 if (matrix[i][j]) {
+                    num += 1;
+
                     columns[j] += 1;
                     rows[i] += 1;
 
@@ -63,6 +66,10 @@ public class NQueens {
                     }
                 }
             }
+        }
+
+        if (num != size) {
+            return false;
         }
 
         for (int i = 0; i < size; ++i) {
