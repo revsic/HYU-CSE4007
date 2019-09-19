@@ -18,7 +18,8 @@ public class Application {
         }
 
         int size = Integer.parseInt(args[0]);
-        
+        String path = args[1];
+
         System.out.println(">DFS\n" + solve(new DFS(), size) + "\n");
         System.out.println(">BFS\n" + solve(new BFS(), size) + "\n");
         System.out.println(">DFID\n" + solve(new DFID(), size) + "\n");
