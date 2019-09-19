@@ -1,8 +1,6 @@
 package assignment1.algorithms;
 
-import java.util.ArrayList;
 import java.util.ArrayDeque;
-import assignment1.problem.NQueens;
 
 
 public class BFS implements Solution {
