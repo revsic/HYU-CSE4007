@@ -1,8 +1,7 @@
 package assignment1.algorithms;
 
-import java.util.ArrayList;
 import java.util.Stack;
-import assignment1.problem.NQueens;
+import assignment1.algorithms.Record;
 
 
 public class DFS implements Solution {
@@ -27,29 +26,5 @@ public class DFS implements Solution {
         }
 
         return null;
-    }
-
-    static class Record {
-        NQueens nQueens;
-        ArrayList<int[]> coords;
-
-        static Record empty(int size) {
-            return new Record(new NQueens(size), new ArrayList<int[]>());
-        }
-
-        Record(NQueens nQueens, ArrayList<int[]> coords) {
-            this.nQueens = nQueens;
-            this.coords = coords;
-        }
-
-        Record addCoord(int x, int y) {
-            NQueens queens = nQueens.clone();
-            queens.setPos(x, y);
-
-            ArrayList<int[]> coordinates = new ArrayList<int[]>(coords);
-            coordinates.add(new int[]{ x, y });
-
-            return new Record(queens, coordinates);
-        }
     }
 }
