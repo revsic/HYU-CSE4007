@@ -11,8 +11,8 @@ import assignment1.algorithms.Solution;
 
 public class Application {
     public static void main(String[] args) {
-        System.out.println(">DFS\n" + solve(new DFS(), 7));
-        System.out.println(">BFS\n" + solve(new BFS(), 7));
+        System.out.println(">DFS\n" + solve(new DFS(), 7) + "\n");
+        System.out.println(">BFS\n" + solve(new BFS(), 7) + "\n");
     }
 
     public static Info solve(Solution solution, int size) {
