@@ -1,5 +1,7 @@
 package assignment1;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Collectors;
@@ -18,11 +20,20 @@ public class Application {
         }
 
         int size = Integer.parseInt(args[0]);
-        String path = args[1];
+        String msg = 
+            ">DFS\n" + solve(new DFS(), size) + "\n\n" +
+            ">BFS\n" + solve(new BFS(), size) + "\n\n" +
+            ">DFID\n" + solve(new DFID(), size) + "\n";
 
-        System.out.println(">DFS\n" + solve(new DFS(), size) + "\n");
-        System.out.println(">BFS\n" + solve(new BFS(), size) + "\n");
-        System.out.println(">DFID\n" + solve(new DFID(), size) + "\n");
+        String path = args[1];
+        try {
+            File file = new File(path, "result" + size + ".txt");
+            FileOutputStream stream = new FileOutputStream(file);
+            stream.write(msg.getBytes());
+            stream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static Info solve(Solution solution, int size) {
