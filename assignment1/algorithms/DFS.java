@@ -1,49 +1,50 @@
 package assignment1.algorithms;
 
 import java.util.ArrayList;
+import java.util.Stack;
 import assignment1.problem.NQueens;
 
 
 public class DFS implements Solution {
     public int[][] solve(int size) {
-        return recursion(size, new ArrayList<int[]>(), new NQueens(size));
-    }
+        Stack<Record> stack = new Stack<Record>();
 
-    public int[][] recursion(int size, ArrayList<int[]> coords, NQueens nQueens) {
-        if (coords.size() == size) {
-            if (nQueens.isSolved()) {
-                return coords.toArray(new int[2][size]);
-            } else {
-                return null;
+        while (!stack.empty()) {
+            Record record = stack.pop();
+            if (record.coords.size() == size && record.nQueens.isSolved()) {
+                return record.coords.toArray(new int[2][size]);
             }
-        }
 
-        int row = coords.size();
-        for (int i = 0; i < size; ++i) {
-            NQueens clonedQueens = nQueens.clone();
-            clonedQueens.setPos(row, i);
-
-            ArrayList<int[]> clonedCoords = cloneCoordinates(coords);
-            
-            int[] pos = { row, i };
-            clonedCoords.add(pos);
-
-            int[][] res = recursion(size, clonedCoords, clonedQueens);
-            if (res != null) {
-                return res;
+            int row = record.coords.size();
+            for (int i = 0; i < size; ++i) {
+                stack.push(record.addCoord(i, row));
             }
         }
 
         return null;
     }
 
-    private ArrayList<int[]> cloneCoordinates(ArrayList<int[]> coords) {
-        ArrayList<int[]> cloned = new ArrayList<int[]>(coords.size());
-        for (int i = 0; i < coords.size(); ++i) {
-            int[] pos = coords.get(i);
-            int[] clonedPos = { pos[0], pos[1] };
-            cloned.add(clonedPos);
+    static class Record {
+        NQueens nQueens;
+        ArrayList<int[]> coords;
+
+        static Record empty(int size) {
+            return new Record(new NQueens(size), new ArrayList<int[]>());
         }
-        return cloned;
+
+        Record(NQueens nQueens, ArrayList<int[]> coords) {
+            this.nQueens = nQueens;
+            this.coords = coords;
+        }
+
+        Record addCoord(int x, int y) {
+            NQueens queens = nQueens.clone();
+            queens.setPos(x, y);
+
+            ArrayList<int[]> coordinates = new ArrayList<int[]>(coords);
+            coordinates.add(new int[]{ x, y });
+
+            return new Record(queens, coordinates);
+        }
     }
 }
