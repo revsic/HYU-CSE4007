@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import assignment1.algorithms.BFS;
 import assignment1.algorithms.DFS;
 import assignment1.algorithms.Solution;
 
@@ -11,6 +12,7 @@ import assignment1.algorithms.Solution;
 public class Application {
     public static void main(String[] args) {
         System.out.println(">DFS\n" + solve(new DFS(), 7));
+        System.out.println(">BFS\n" + solve(new BFS(), 7));
     }
 
     public static Info solve(Solution solution, int size) {
