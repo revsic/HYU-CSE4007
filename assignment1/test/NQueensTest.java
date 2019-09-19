@@ -71,6 +71,7 @@ public class NQueensTest implements Testable {
 
     private boolean isSolvedTest() {
         int[][][] failed = {
+            { { 0, 1 }, { 1, 3 }, { 2, 0 } }, // number of queens
             { { 0, 0 }, { 1, 3 }, { 2, 0 }, { 3, 2 } }, // 1st row
             { { 0, 0 }, { 1, 3 }, { 2, 3 }, { 3, 1 } }, // 4th row
             { { 0, 0 }, { 3, 1 }, { 0, 2 }, { 2, 3 } }, // 1st column
