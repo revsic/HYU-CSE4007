@@ -1,7 +1,6 @@
 package assignment1.algorithms;
 
 import java.util.Stack;
-import assignment1.algorithms.Record;
 
 
 public class DFS implements Solution {
