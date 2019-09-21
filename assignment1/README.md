@@ -78,7 +78,7 @@ In same environment, 8-Queens problem, DFS spend only 145MB memory and 0.78 seco
 
 I think about why, and I conclude that N-Queens problem has solution in known depth, like N, so that if N is go bigger and BFS try to go deeper with stacking all states with large memory consumption, it has to take long time to approach that known depth. Then it starts to check bottom states whether it is solved or not. 
 
-But DFS goes to the knwon depth faster than BFS, and check the states one by one. And I don't expriment yet, but if the solution rate is high enough or have certain distribution, DFS can find the solution much faster than BFS. And the experiment result show that DFS is much faster than BFS in N-Queens problem, so we can guess that solution rate is high enough for DFS to find the solution. 
+But DFS goes to the known depth faster than BFS, and check the states in the middel of traverse. And I don't expriment yet, but if the solution rate is high enough or have certain distribution, DFS can find the solution much faster than BFS. And the experiment result show that DFS is much faster than BFS in N-Queens problem, so we can guess that solution rate is high enough for DFS to find the solution. 
 
 ### DFID
 
