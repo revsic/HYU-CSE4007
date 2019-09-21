@@ -40,7 +40,7 @@ Characteristics
 Summary
 
 | name | completeness | optimality | time complexity |
-|--|--|--|--|
+|---|---|---|---|
 | BFS | O | O | b^d |
 | DFS | O | X | b^D |
 | DFID | O | O | b^d |
@@ -48,7 +48,7 @@ Summary
 Experiment: 8-Queens problem, 10 times experiment, mean value
 
 | name | time | memory |
-|--|--|--|
+|---|---|---|
 | DFS | 0.0486 | 145.2MB |
 | BFS | 0.4277 | more than 8GB |
 | DFID | 0.1354 | 146.6MB |
@@ -105,7 +105,7 @@ Since the N-Queens problem has the solution in known depths, like N, DFID is not
 - Time experiment (sec, 7-Queens)
 
 | name | 1th | 2nd | 3rd | 4th | 5th | 6th | 7th | 8th | 9th | 10th | mean |
-|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|
 | DFS | 0.047 | 0.05 | 0.052 | 0.047 | 0.048 | 0.048 | 0.048 | 0.049 | 0.049 | 0.048 | 0.0486 |
 | BFS | 0.42 | 0.43 | 0.424 | 0.428 | 0.431 | 0.436 | 0.428 | 0.426 | 0.432 | 0.422 | 0.4277 |
 | DFID | 0.135 | 0.132 | 0.14 | 0.133 | 0.136 | 0.132 | 0.14 | 0.134 | 0.137 | 0.135 | 0.1354 |
@@ -115,6 +115,6 @@ Since the N-Queens problem has the solution in known depths, like N, DFID is not
     - BFS is too slow to solve the 8-Queens problem, And I find that it always over 8GB, so I'll write that 'BFS use more than 8GB on 10 experiments.'
 
 | name | 1th | 2nd | 3rd | 4th | 5th | 6th | 7th | 8th | 9th | 10th | mean |
-|--|--|--|--|--|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|---|---|---|---|
 | DFS | 145MB | 144MB | 146MB | 145MB | 146MB | 145MB | 145MB | 145MB | 145MB | 146MB | 145.2MB |
 | DFID | 145MB | 145MB | 158MB | 146MB | 145MB | 146MB | 146MB | 145MB | 145MB | 145MB | 146.6MB |
