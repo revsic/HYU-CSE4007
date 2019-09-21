@@ -12,6 +12,7 @@ public class BFS implements Solution {
      * @param size int, size of the board.
      * @return 2D coordinates array for queens if solution exist, else null.
      */
+    @Override
     public int[][] solve(int size) {
         ArrayDeque<Record> queue = new ArrayDeque<Record>();
         queue.push(Record.empty(size));
