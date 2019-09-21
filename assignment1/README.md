@@ -91,4 +91,4 @@ Depth-first search with iterative deepening.
 
 Implementation: Use DFS with limited depth and iteratively increasing depths to find solution.
 
-Since N-Queens problem has solution in known depths, like N, DFID is not such effective comparatively to DFS or BFS on such problems. But it can be more effective than BFS on view of memory complexity.
+Since N-Queens problem has solution in known depths, like N, DFID is not such effective on such problems.
