@@ -17,15 +17,7 @@ Suggested environments
 To compile and run
 ```
 mkdir classes
-./script/app/compile assignment1
-./script/app/run assignment1 7 /abs/path/to/save/result
-cat /abs/path/to/save/result/result7.txt
-```
-or raw scripts
-```
-mkdir classes
 javac -d classes assignment1/Application.java
 cd classes
 java assignment1.Application 7 /abs/path/to/save/result
-cat /abs/path/to/save/result/result7.txt
 ```
