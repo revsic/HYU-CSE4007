@@ -23,9 +23,9 @@ java assignment1.Application 7 /abs/path/to/save/result
 ```
 
 ## Methods
-- [BFS](#BFS): Breadth-first search
-- [DFS](#DFS): Depth-first search
-- [DFID](#DFID): DFS with iterative deepening
+- [BFS](#bfs): Breadth-first search
+- [DFS](#dfs): Depth-first search
+- [DFID](#dfid): DFS with iterative deepening
 
 ### BFS
 
