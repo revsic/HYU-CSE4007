@@ -6,7 +6,13 @@ import java.util.stream.Stream;
 import assignment1.problem.NQueens;
 
 
+/**
+ * Test suit for NQueens class.
+ */
 public class NQueensTest implements Testable {
+    /**
+     * Implement test method for Testable interface.
+     */
     @Override
     public boolean test() {
         return positionSetterGetterTest()
@@ -14,6 +20,13 @@ public class NQueensTest implements Testable {
             && isSolvedTest();
     }
 
+    /**
+     * Compare the position lists with real N-Queens environment.
+     * @param posList 2D coordinates array where queen exists.
+     * @param queens N-Queens environment.
+     * @param msgbase head of failure message.
+     * @return
+     */
     private boolean positionTest(int[][] posList, NQueens queens, String msgbase) {
         for (int i = 0; i < 4; ++i) {
             for (int j = 0; j < 4; ++j) {
@@ -35,31 +48,50 @@ public class NQueensTest implements Testable {
         return true;
     }
 
+    /**
+     * Test position setter and getter of N-Queens enviornment.
+     * @return whether test success.
+     */
     private boolean positionSetterGetterTest() {
+        // sample position list
         int[][] positionList = { { 1, 1 }, { 3, 2 } };
 
+        // set queens
         NQueens nQueens = new NQueens(4);
         for (int i = 0; i < positionList.length; ++i) {
             int[] pos = positionList[i];
             nQueens.setPos(pos[0], pos[1]);
         }
 
+        // check queens are placed properly.
         return positionTest(positionList, nQueens, "setPos, getPos failure");
     }
 
+    /**
+     * Test clone method.
+     * @return whether test success.
+     */
     private boolean cloneTest() {
+        // sample coordinates
         int[][] positionList = { { 1, 1 }, { 3, 2 } };
 
+        // set queens
         NQueens nQueens = new NQueens(4);
         for (int i = 0; i < positionList.length; ++i) {
             int[] pos = positionList[i];
             nQueens.setPos(pos[0], pos[1]);
         }
 
+        // clone and check the queens.
         NQueens cloned = nQueens.clone();
         return positionTest(positionList, cloned, "clone failure");
     }
 
+    /**
+     * Set queens with given coordinates and return is problem solved.
+     * @param coords coordinates of queens.
+     * @return whether problem is solved.
+     */
     private boolean caseTest(int[][] coords) {
         NQueens nQueens = new NQueens(4);
         for (int i = 0; i < coords.length; ++i) {
@@ -70,6 +102,7 @@ public class NQueensTest implements Testable {
     }
 
     private boolean isSolvedTest() {
+        // failure case
         int[][][] failed = {
             { { 0, 1 }, { 1, 3 }, { 2, 0 } }, // number of queens
             { { 0, 0 }, { 1, 3 }, { 2, 0 }, { 3, 2 } }, // 1st row
@@ -83,11 +116,13 @@ public class NQueensTest implements Testable {
             { { 0, 3 }, { 1, 0 }, { 2, 2 }, { 3, 1 } }, // lowerhalf leftdown
         };
 
+        // success case
         int[][][] success = {
             { { 0, 1 }, { 1, 3 }, { 2, 0 }, { 3, 2 } },
             { { 0, 2 }, { 1, 0 }, { 2, 3 }, { 3, 1 } },
         };
 
+        // test failure case
         for (int i = 0; i < failed.length; ++i) {
             if (caseTest(failed[i])) {
                 System.out.println("isSolved failure: false case, " + failed[i]);
@@ -95,9 +130,11 @@ public class NQueensTest implements Testable {
             }
         }
 
+        // test success case
         for (int i = 0; i < success.length; ++i) {
             if (!caseTest(success[i])) {
                 System.out.println("isSolved failure: true case, " + success[i]);
+                return false;
             }
         }
 
