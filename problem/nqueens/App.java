@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 /**
  * Java application for solving N-Queens problem with several searching methods.
  */
-public class Application {
+public class App {
     /**
      * Run NQueens application, pass size of board and path to write the log file.
      * Then run method will write the log about which is solvable,
