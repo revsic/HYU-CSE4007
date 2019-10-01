@@ -44,6 +44,14 @@ public class NQueens {
     }
 
     /**
+     * Get board of current state.
+     * @return boolean matrix represent board.
+     */
+    public boolean[][] getBoard() {
+        return matrix;
+    }
+
+    /**
      * Set queens in given coordinate.
      * @param x coordinate value for x-axis.
      * @param y coordinate value for y-axis.
