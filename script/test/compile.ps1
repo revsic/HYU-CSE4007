@@ -1,1 +1,1 @@
-javac -d classes $args\test\Application.java
+javac -d classes test\Application.java

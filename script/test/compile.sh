@@ -1,1 +1,1 @@
-javac -d classes $1/test/Application.java
+javac -d classes test/Application.java

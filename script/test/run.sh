@@ -1,3 +1,3 @@
 cd classes
-java $1.test.Application
+java test.Application
 cd ..

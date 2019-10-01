@@ -1,3 +1,3 @@
 cd classes
-java "$args.test.Application"
+java test.Application
 cd ..
