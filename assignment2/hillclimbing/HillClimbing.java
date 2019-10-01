@@ -1,4 +1,4 @@
-package assignment2;
+package assignment2.hillclimbing;
 
 import problem.nqueens.Solution;
 
