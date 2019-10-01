@@ -1,5 +1,6 @@
 package assignment2.hillclimbing;
 
+import assignment2.hillclimbing.Objective;;
 import problem.nqueens.Solution;
 
 
@@ -7,6 +8,14 @@ import problem.nqueens.Solution;
  * N-Queens problem solver with Hill-Climbing policy.
  */
 public class HillClimbing implements Solution {
+    public HillClimbing() {
+        
+    }
+
+    public HillClimbing(Objective obj) {
+
+    }
+
     /**
      * Name of the solution.
      * @return name of the solution.
