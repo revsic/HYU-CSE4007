@@ -48,7 +48,11 @@ public class NQueens {
      * @return boolean matrix represent board.
      */
     public boolean[][] getBoard() {
-        return matrix;
+        boolean[][] board = new boolean[size][size];
+        for (int i = 0; i < size; ++i) {
+            System.arraycopy(matrix[i], 0, board[i], 0, size);
+        }
+        return board;
     }
 
     /**
