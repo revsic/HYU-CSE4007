@@ -39,6 +39,16 @@ public class App {
     }
 
     /**
+     * Alias of method run for single solution argument.
+     * @param solver N-Queens solution.
+     * @param boardSize size of the board.
+     * @param path path to write the log file.
+     */
+    public static void run(Solution solver, int boardSize, String path) {
+        run(new Solution[]{ solver }, boardSize, path);
+    }
+
+    /**
      * Solve with interface `solution`.
      * @param solution N-Queens solvable methods.
      * @param size the size of the board.
