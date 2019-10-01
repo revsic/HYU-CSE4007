@@ -16,6 +16,7 @@ public class NQueensTest implements Testable {
     @Override
     public boolean test() {
         return positionSetterGetterTest()
+            && getBoardTest()
             && cloneTest()
             && isSolvedTest();
     }
@@ -64,6 +65,29 @@ public class NQueensTest implements Testable {
 
         // check queens are placed properly.
         return positionTest(positionList, nQueens, "setPos, getPos failure");
+    }
+
+    /**
+     * Test getBoard method of NQueens.
+     * @return whether test success.
+     */
+    private boolean getBoardTest() {
+        int[][] positionList = { { 1, 1 }, { 3, 2 } };
+
+        NQueens nQueens = new NQueens(4);
+        for (int[] pos : positionList) {
+            nQueens.setPos(pos[0], pos[1]);
+        }
+
+        boolean[][] board = nQueens.getBoard();
+        for (int i = 0; i < 4; ++i) {
+            for (int j = 0; j < 4; ++j) {
+                if (board[j][i] != nQueens.getPos(i, j)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
