@@ -1,6 +1,7 @@
 package assignment1.algorithms;
 
 import java.util.Stack;
+import problem.nqueens.Solution;
 
 
 /**
@@ -22,6 +23,15 @@ public class DFS implements Solution {
      */
     public DFS(int maxdepth) {
         this.maxdepth = maxdepth;
+    }
+
+    /**
+     * Name of the solution.
+     * @return name of the solution.
+     */
+    @Override
+    public String name() {
+        return "DFS";
     }
 
     /**
