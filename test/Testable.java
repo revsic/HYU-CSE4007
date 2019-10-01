@@ -1,4 +1,4 @@
-package assignment1.test;
+package test;
 
 
 /**
