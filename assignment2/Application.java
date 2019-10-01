@@ -1,5 +1,6 @@
 package assignment2;
 
+import assignment2.hillclimbing.HillClimbing;
 import problem.nqueens.App;
 
 
