@@ -69,6 +69,19 @@ public class NQueens {
     }
 
     /**
+     * Remove queens in given coordinate.
+     * @param x coordinate value for x-axis.
+     * @param y coordinate value for y-axis.
+     * @exception ArrayIndexOutOfBoundsException
+     *  if x and y coordinates are either out of board size.
+     */
+    public void relasePos(int x, int y) {
+        if (matrix != null) {
+            matrix[y][x] = false;
+        }
+    }
+
+    /**
      * Return whether given position is occupied.
      * @param x coordinate value for x-axis.
      * @param y coordinate value for y-axis.
