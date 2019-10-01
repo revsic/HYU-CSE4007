@@ -1,7 +1,7 @@
 package assignment1.algorithms;
 
 import java.util.ArrayList;
-import assignment1.problem.NQueens;
+import problem.nqueens.NQueens;
 
 
 /**
@@ -14,7 +14,7 @@ public class Record {
     /**
      * Return empty record.
      * @param size size of the board.
-     * @return Record, empty record.
+     * @return empty record.
      */
     public static Record empty(int size) {
         return new Record(new NQueens(size), new ArrayList<int[]>());
