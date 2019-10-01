@@ -19,7 +19,6 @@ public class App {
      * @param solvers NQueens solutions.
      * @param boardSize size of the board.
      * @param path path to write the log file.
-     * @exception java.lang.NumberFormatException, if first argument cannot casted to integers.
      */
     public static void run(Solution[] solvers, int boardSize, String path) {
         String msg = "";
