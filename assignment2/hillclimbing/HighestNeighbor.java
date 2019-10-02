@@ -14,7 +14,9 @@ public class HighestNeighbor extends DefaultObjective {
     public Record next(Record record) {
         Record highest = null;
         double score = -1024;
+        // traverse all neighbor
         for (Record neighbor : record.neighbor()) {
+            // get maximum objective
             double res = objective(neighbor.nQueens);
             if (res > score) {
                 score = res;
