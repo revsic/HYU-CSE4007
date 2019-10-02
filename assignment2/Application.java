@@ -1,5 +1,6 @@
 package assignment2;
 
+import assignment2.hillclimbing.HighestNeighbor;
 import assignment2.hillclimbing.HillClimbing;
 import problem.nqueens.App;
 
@@ -24,6 +25,6 @@ public class Application {
 
         final int maxRetry = 500;
 
-        App.run(new HillClimbing(maxRetry), size, path);
+        App.run(new HillClimbing(maxRetry, new HighestNeighbor()), size, path);
     }
 }
