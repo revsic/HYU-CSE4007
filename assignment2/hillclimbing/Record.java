@@ -23,12 +23,19 @@ public class Record {
         };
 
         int idx = 0;
-        int numNeighbors = nQueens.getSize() * deltas.length;
+        int num = 0;
+        int size = nQueens.getSize();
+        int numNeighbors = size * deltas.length;
         ArrayList<Record> records = new ArrayList<Record>(numNeighbors);
         for (int[] pos : coords) {
             for (int[] delta : deltas) {
                 int[] newPos = { pos[0] + delta[0], pos[1] + delta[1] };
+                if (newPos[0] < 0 || newPos[0] >= size
+                    || newPos[1] < 0 || newPos[1] >= size) {
+                    continue;
+                }
 
+                num += 1;
                 NQueens queens = nQueens.clone();
                 queens.relasePos(pos[0], pos[1]);
                 queens.setPos(newPos[0], newPos[1]);
@@ -41,7 +48,7 @@ public class Record {
             idx += 1;
         }
 
-        return records.toArray(new Record[numNeighbors]);
+        return records.toArray(new Record[num]);
     }
 
     public static Record random(int size) {
