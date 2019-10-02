@@ -10,7 +10,7 @@ public class HighestNeighbor extends DefaultObjective {
             double res = objective(neighbor.nQueens);
             if (res > score) {
                 score = res;
-                highest = record;
+                highest = neighbor;
             }
         }
         return highest;
