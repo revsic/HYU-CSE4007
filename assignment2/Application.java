@@ -1,5 +1,6 @@
 package assignment2;
 
+import java.util.stream.Stream;
 import assignment2.hillclimbing.HighestNeighbor;
 import assignment2.hillclimbing.HillClimbing;
 import problem.nqueens.App;
@@ -25,5 +26,19 @@ public class Application {
 
         final int maxRetry = Integer.MAX_VALUE;
         App.run(new HillClimbing(maxRetry, new HighestNeighbor()), size, path);
+        // experiment();
+    }
+
+    public static void experiment() {
+        HillClimbing sol = new HillClimbing(Integer.MAX_VALUE, new HighestNeighbor());
+        for (int i = 4; i <= 10; ++i) {
+            App.Info[] res = App.experiment(sol, i, 100, 10);
+            Double[] times = Stream.of(res)
+                                   .map(x -> x.elapsed)
+                                   .filter(x -> x != 0.0)
+                                   .toArray(Double[]::new);
+            double mean = Stream.of(times).reduce(0.0, Double::sum) / times.length;
+            System.out.println(i + " " + times.length + " " + mean);
+        }
     }
 }
