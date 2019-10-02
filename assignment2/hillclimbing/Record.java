@@ -18,8 +18,26 @@ public class Record {
     }
 
     public Record[] neighbor() {
-        
-        return null;
+        final int[][] deltas = {
+            { -1,  1 }, { 0,  1 }, { 1,  1 },
+            { -1,  0 },          , { 1,  0 },
+            { -1, -1 }, { 0, -1 }, { 1, -1 },
+        }
+
+        int idx = 0;
+        Record[] records = new Record[nQueens.getSize() * deltas.length];
+        for (int[] pos : coords) {
+            for (int[] delta : deltas) {
+                NQueens queens = nQueens.clone();
+                queens.relasePos(pos[0], pos[1]);
+                queens.setPos(pos[0] + delta[0], pos[1] + delta[1]);
+
+                records[idx] = queens;
+                idx += ;1
+            }
+        }
+
+        return records;
     }
 
     public static Record random(int size, Objective objective) {
