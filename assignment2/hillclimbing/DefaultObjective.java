@@ -46,7 +46,7 @@ public abstract class DefaultObjective implements Policy {
         for (int i = 0; i < size * 2 - 1; ++i) {
             score += Math.max(leftdown[i] - 1, 0) + Math.max(rightdown[i] - 1, 0);
         }
-        return score;
+        return 10 - score;
     }
 
     public abstract Record next(Record record);
