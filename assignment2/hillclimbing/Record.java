@@ -68,6 +68,7 @@ public class Record {
                 exist = coords.stream().anyMatch(a -> Arrays.equals(finalized, a));
             }
             coords.add(pos);
+            queens.setPos(pos[0], pos[1]);
         }
 
         return new Record(queens, coords);
