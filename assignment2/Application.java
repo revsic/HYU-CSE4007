@@ -6,11 +6,11 @@ import problem.nqueens.App;
 
 
 /**
- * Application for showing assignment1 solutions of N-Queens problem.
+ * Application for showing assignment2 solutions of N-Queens problem.
  */
 public class Application {
     /**
-     * Main application, run BFS, DFS, DFID with given board size and log path.
+     * Main application, run hill climbing method with given board size and log path.
      * @param args command line argument, board size and log path.
      * @exception java.lang.NumberFormatException exception can occur in Integer.parseInt.
      */
