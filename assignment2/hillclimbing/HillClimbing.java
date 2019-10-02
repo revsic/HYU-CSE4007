@@ -36,21 +36,27 @@ public class HillClimbing implements Solution {
      */
     @Override
     public int[][] solve(int size) {
+        // retry
         for (int i = 0; i < maxRetry; ++i) {
+            // randomize record
             Record record = Record.random(size);
+            // calculate objective
             double score = policy.objective(record.nQueens);
             while (true) {
+                // generate next record
                 Record next = policy.next(record);
                 double nextScore = policy.objective(next.nQueens);
 
+                // if record is in local minima
                 if (score >= nextScore) {
                     break;
                 }
 
+                // update record
                 record = next;
                 score = nextScore;
             }
-
+            // if given record is solved
             if (record.nQueens.isSolved()) {
                 return record.coords.toArray(new int[2][size]);
             }
