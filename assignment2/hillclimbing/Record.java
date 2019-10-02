@@ -15,7 +15,7 @@ public class Record {
         this.coords = coords;
     }
 
-    public Record[] neighbor() {
+    public ArrayList<Record> neighbor() {
         final int[][] deltas = {
             { -1,  1 }, { 0,  1 }, { 1,  1 },
             { -1,  0 },            { 1,  0 },
@@ -23,7 +23,6 @@ public class Record {
         };
 
         int idx = 0;
-        int num = 0;
         int size = nQueens.getSize();
         int numNeighbors = size * deltas.length;
         ArrayList<Record> records = new ArrayList<Record>(numNeighbors);
@@ -35,7 +34,6 @@ public class Record {
                     continue;
                 }
 
-                num += 1;
                 NQueens queens = nQueens.clone();
                 queens.relasePos(pos[0], pos[1]);
                 queens.setPos(newPos[0], newPos[1]);
@@ -47,8 +45,7 @@ public class Record {
             }
             idx += 1;
         }
-
-        return records.toArray(new Record[num]);
+        return records;
     }
 
     public static Record random(int size) {
