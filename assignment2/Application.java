@@ -23,8 +23,7 @@ public class Application {
         int size = Integer.parseInt(args[0]);
         String path = args[1];
 
-        final int maxRetry = 500;
-
+        final int maxRetry = Integer.MAX_VALUE;
         App.run(new HillClimbing(maxRetry, new HighestNeighbor()), size, path);
     }
 }
