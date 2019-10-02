@@ -63,7 +63,7 @@ public class App {
 
         // if solution method cannot solve the problem.
         if (res == null || res.length != size) {
-            return new Info("No solution", 0);
+            return new Info("No solution", 0, null);
         }
 
         // sort the result in x-axis.
@@ -78,24 +78,61 @@ public class App {
         String msg = Stream.of(res)
             .map(x -> String.valueOf(x[1]))
             .collect(Collectors.joining(" "));
-        return new Info(msg, (end - start) / 1000.0);
+        return new Info(msg, (end - start) / 1000.0, res);
+    }
+
+    /**
+     * Solve N-Queens problem in multiple thread.
+     * @param solution N-Queens solvable methods.
+     * @param size size of the board.
+     * @param numExpr the number of experiment.
+     * @param numThread the number of thread.
+     */
+    public static Info[] experiment(Solution solution, int size, int numExpr, int numThread) {
+        int batch = numExpr / numThread;        
+        Info[] info = new Info[batch * numThread];
+        Thread[] threads = new Thread[numThread];
+
+        for (int i = 0; i < numThread; ++i) {
+            final int threadId = i;
+            threads[i] = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int j = 0; j < batch; ++j) {
+                        info[threadId * numThread + j] = solve(solution, size);
+                    }
+                }
+            });
+        }
+
+        for (int i = 0; i < numThread; ++i) {
+            try {
+                threads[i].join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return info;
     }
     
     /**
      * Inclass static class for solved result.
      */
-    static class Info {
-        String msg;
-        double elapsed;
+    public static class Info {
+        public String msg;
+        public double elapsed;
+        public int[][] solution;
 
         /**
          * Construct information structure.
          * @param msg Message string.
          * @param elapsed elapsed times in sec unit.
+         * @param solution coordinate array.
          */
-        Info(String msg, double elapsed) {
+        Info(String msg, double elapsed, int[][] solution) {
             this.msg = msg;
             this.elapsed = elapsed;
+            this.solution = solution;
         }
 
         @Override
