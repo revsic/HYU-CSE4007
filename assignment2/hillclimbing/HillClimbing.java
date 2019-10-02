@@ -1,7 +1,5 @@
 package assignment2.hillclimbing;
 
-import assignment2.hillclimbing.Objective;
-import problem.nqueens.NQueens;
 import problem.nqueens.Solution;
 
 
@@ -10,11 +8,11 @@ import problem.nqueens.Solution;
  */
 public class HillClimbing implements Solution {
     private int maxRetry;
-    private Objective objective;
+    private Policy policy;
 
-    public HillClimbing(int maxRetry, Objective objective) {
+    public HillClimbing(int maxRetry, Policy policy) {
         this.maxRetry = maxRetry;
-        this.objective = objective;
+        this.policy = policy;
     }
 
     /**
@@ -33,28 +31,26 @@ public class HillClimbing implements Solution {
      */
     @Override
     public int[][] solve(int size) {
-        int try = 0;
-        Record record = null;
-        do {
-            record = Record.random(size, objective);
-            double current = objective.score(record.nQueens);
+        for (int i = 0; i < maxRetry; ++i) {
+            Record record = Record.random(size);
+            double score = policy.objective(record.nQueens);
             while (true) {
-                Record best = record.highestNeighbor();
-                double next = objective.score(best.nQueens);
-                if (current >= next) {
+                Record next = policy.next(record);
+                double nextScore = policy.objective(next.nQueens);
+
+                if (score >= nextScore) {
                     break;
                 }
 
-                record = best;
-                current = next;
+                record = next;
+                score = nextScore;
             }
 
-            try += 1;
-        } while (record.nQueens.isSolved() || try > maxRetry);
-
-        if (try > maxRetry) {
-            return null;
+            if (record.nQueens.isSolved()) {
+                return record.coords.toArray(new int[2][size]);
+            }
         }
-        return record.coords.toArray(new int[2][size]);
+
+        return null;
     }
 }
