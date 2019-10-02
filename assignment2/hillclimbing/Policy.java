@@ -4,7 +4,7 @@ import problem.nqueens.NQueens;
 
 
 /**
- * Hill climbing policy.
+ * Neighbor selection policy.
  */
 public interface Policy {
     /**

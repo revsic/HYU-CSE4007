@@ -10,6 +10,11 @@ public class HillClimbing implements Solution {
     private int maxRetry;
     private Policy policy;
 
+    /**
+     * Construct hill climbing method with given policy.
+     * @param maxRetry maximum number of retry.
+     * @param policy neighbor selection policy.
+     */
     public HillClimbing(int maxRetry, Policy policy) {
         this.maxRetry = maxRetry;
         this.policy = policy;
