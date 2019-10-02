@@ -9,53 +9,42 @@ import problem.nqueens.NQueens;
 public class Record {
     public NQueens nQueens;
     public ArrayList<int[]> coords;
-    public Objective objective;
 
-    public Record(NQueens nQueens, ArrayList<int[]> coords, Objective objective) {
+    public Record(NQueens nQueens, ArrayList<int[]> coords) {
         this.nQueens = nQueens;
         this.coords = coords;
-        this.objective = objective;
     }
 
     public Record[] neighbor() {
         final int[][] deltas = {
             { -1,  1 }, { 0,  1 }, { 1,  1 },
-            { -1,  0 },          , { 1,  0 },
+            { -1,  0 },            { 1,  0 },
             { -1, -1 }, { 0, -1 }, { 1, -1 },
-        }
+        };
 
         int idx = 0;
-        Record[] records = new Record[nQueens.getSize() * deltas.length];
+        int numNeighbors = nQueens.getSize() * deltas.length;
+        ArrayList<Record> records = new ArrayList<Record>(numNeighbors);
         for (int[] pos : coords) {
             for (int[] delta : deltas) {
+                int[] newPos = { pos[0] + delta[0], pos[1] + delta[1] };
+
                 NQueens queens = nQueens.clone();
                 queens.relasePos(pos[0], pos[1]);
-                queens.setPos(pos[0] + delta[0], pos[1] + delta[1]);
+                queens.setPos(newPos[0], newPos[1]);
 
-                ArrayList<int[]> newCoords = coords.clone();
+                ArrayList<int[]> newCoords = new ArrayList<int[]>(coords);
+                newCoords.set(idx, newPos);
 
-                records[idx] = new Record(quuens, newCoords, objective);
-                idx += 1;
+                records.add(new Record(queens, newCoords));
             }
+            idx += 1;
         }
 
-        return records;
+        return records.toArray(new Record[numNeighbors]);
     }
 
-    public Record highestNeighbor() {
-        double score = Double.MIN_VALUE;
-        Record highest = null;
-        for (Record record : neighbor()) {
-            double res = objective.score(record.nQueens);
-            if (res > score) {
-                score = res;
-                highest = record;
-            }
-        }
-        return highest;
-    }
-
-    public static Record random(int size, Objective objective) {
+    public static Record random(int size) {
         NQueens queens = new NQueens(size);
         ArrayList<int[]> coords = new ArrayList<int[]>(size);
 
@@ -68,11 +57,12 @@ public class Record {
                 int x = random.nextInt(size);
                 int y = random.nextInt(size);
                 pos = new int[] { x, y };
-                exist = coords.stream().anyMatch(a -> Arrays.equals(pos, a));
+                final int[] finalized = pos;
+                exist = coords.stream().anyMatch(a -> Arrays.equals(finalized, a));
             }
             coords.add(pos);
         }
 
-        return new Record(queens, coords, objective);
+        return new Record(queens, coords);
     }
 }
