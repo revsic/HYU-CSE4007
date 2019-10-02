@@ -99,10 +99,11 @@ public class App {
                 @Override
                 public void run() {
                     for (int j = 0; j < batch; ++j) {
-                        info[threadId * numThread + j] = solve(solution, size);
+                        info[threadId * batch + j] = solve(solution, size);
                     }
                 }
             });
+            threads[i].start();
         }
 
         for (int i = 0; i < numThread; ++i) {
