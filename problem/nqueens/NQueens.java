@@ -44,6 +44,14 @@ public class NQueens {
     }
 
     /**
+     * Get size of the board.
+     * @return size of the board.
+     */
+    public int getSize() {
+        return size;
+    }
+
+    /**
      * Get board of current state.
      * @return boolean matrix represent board.
      */
