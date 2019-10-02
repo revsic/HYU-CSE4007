@@ -96,11 +96,11 @@ where row, col = N size array
 
 N-Queens problem에선 앞서 정의된 Objective가 0에 수렴해야 solution이 존재한다. 이때 0보다 큰 값에서 objective가 수렴할 경우 N-Queens solution을 찾을 수 없다. 이렇게 local optima에 빠질 경우 이를 빠져나갈 policy가 필요하다.
 
-1. Random walk, Stochastic selection
+- Random walk, Stochastic selection
 
 neighbor를 평가하여 선택하는 과정에서, 무조건 가장 높은 값을 선택하기보단 확률적인 프로세스를 통해 적절한 neighbor를 선택한다.
 
-2. Random restart
+- Random restart
 
 local optima에 빠진 경우, random state에서 다시 시작한다.
 
