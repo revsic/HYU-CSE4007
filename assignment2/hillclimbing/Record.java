@@ -32,12 +32,27 @@ public class Record {
                 queens.relasePos(pos[0], pos[1]);
                 queens.setPos(pos[0] + delta[0], pos[1] + delta[1]);
 
-                records[idx] = queens;
-                idx += ;1
+                ArrayList<int[]> newCoords = coords.clone();
+
+                records[idx] = new Record(quuens, newCoords, objective);
+                idx += 1;
             }
         }
 
         return records;
+    }
+
+    public Record highestNeighbor() {
+        double score = Double.MIN_VALUE;
+        Record highest = null;
+        for (Record record : neighbor()) {
+            double res = objective.score(record.nQueens);
+            if (res > score) {
+                score = res;
+                highest = record;
+            }
+        }
+        return highest;
     }
 
     public static Record random(int size, Objective objective) {
