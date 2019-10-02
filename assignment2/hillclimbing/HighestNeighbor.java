@@ -5,7 +5,7 @@ public class HighestNeighbor extends DefaultObjective {
     @Override
     public Record next(Record record) {
         Record highest = null;
-        double score = Double.MIN_VALUE;
+        double score = -1024;
         for (Record neighbor : record.neighbor()) {
             double res = objective(neighbor.nQueens);
             if (res > score) {
