@@ -99,8 +99,10 @@ public class App {
         Info[] info = new Info[batch * numThread];
         Thread[] threads = new Thread[numThread];
 
+        // multi threading
         for (int i = 0; i < numThread; ++i) {
             final int threadId = i;
+            // experiment parallely
             threads[i] = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -112,6 +114,7 @@ public class App {
             threads[i].start();
         }
 
+        // waiting for thread
         for (int i = 0; i < numThread; ++i) {
             try {
                 threads[i].join();
