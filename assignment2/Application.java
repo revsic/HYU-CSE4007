@@ -32,26 +32,34 @@ public class Application {
         // experiment();
     }
 
+    /**
+     * Experiment and check performance for hill climbing approach.
+     */
     public static void experiment() {
         String log = "";
 
         HillClimbing sol = new HillClimbing(Integer.MAX_VALUE, new HighestNeighbor());
+        // iterating with board size i
         for (int i = 4; i <= 10; ++i) {
+            // experiment
             App.Info[] res = App.experiment(sol, i, 100, 10);
+            // get running time
             Double[] times = Stream.of(res)
                                    .map(x -> x.elapsed)
                                    .filter(x -> x != 0.0)
                                    .toArray(Double[]::new);
+            // compute mean
             double mean = Stream.of(times).reduce(0.0, Double::sum) / times.length;
             System.out.println(i + " " + times.length + " " + mean);
 
+            // write log
             log += i + " | " 
                 + Stream.of(times)
                         .map(x -> String.valueOf(x))
                         .collect(Collectors.joining(" | "))
                 + " |\n";
         }
-
+        // write log as file
         FileOutputStream stream;
         try {
             stream = new FileOutputStream("../log.txt");
