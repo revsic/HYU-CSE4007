@@ -39,17 +39,17 @@ public class Application {
         for (int i = 4; i <= 10; ++i) {
             App.Info[] res = App.experiment(sol, i, 100, 10);
             Double[] times = Stream.of(res)
-                                   .filter(x -> x.solution != null)
                                    .map(x -> x.elapsed)
+                                   .filter(x -> x != 0.0)
                                    .toArray(Double[]::new);
             double mean = Stream.of(times).reduce(0.0, Double::sum) / times.length;
             System.out.println(i + " " + times.length + " " + mean);
 
-            log += i + ": " 
+            log += i + " | " 
                 + Stream.of(times)
                         .map(x -> String.valueOf(x))
-                        .collect(Collectors.joining(", "))
-                + "\n";
+                        .collect(Collectors.joining(" | "))
+                + " |\n";
         }
 
         FileOutputStream stream;
