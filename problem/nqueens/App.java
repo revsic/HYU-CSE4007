@@ -12,6 +12,8 @@ import java.util.stream.Stream;
  * Java application for solving N-Queens problem with several searching methods.
  */
 public class App {
+    public static final Info FAILURE_INFO = new Info("No solution", 0, null); 
+
     /**
      * Run NQueens application, pass size of board and path to write the log file.
      * Then run method will write the log about which is solvable,
@@ -55,6 +57,10 @@ public class App {
      * @return Solved information.
      */
     public static Info solve(Solution solution, int size) {
+        if (size < 4) {
+            return FAILURE_INFO;
+        }
+
         // check time elapsing
         long start = System.currentTimeMillis();
         // solve
@@ -63,7 +69,7 @@ public class App {
 
         // if solution method cannot solve the problem.
         if (res == null || res.length != size) {
-            return new Info("No solution", 0, null);
+            return FAILURE_INFO;
         }
 
         // sort the result in x-axis.
