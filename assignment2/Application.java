@@ -1,6 +1,9 @@
 package assignment2;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.stream.Stream;
+import java.util.stream.Collectors;
 import assignment2.hillclimbing.HighestNeighbor;
 import assignment2.hillclimbing.HillClimbing;
 import problem.nqueens.App;
@@ -30,15 +33,32 @@ public class Application {
     }
 
     public static void experiment() {
+        String log = "";
+
         HillClimbing sol = new HillClimbing(Integer.MAX_VALUE, new HighestNeighbor());
         for (int i = 4; i <= 10; ++i) {
             App.Info[] res = App.experiment(sol, i, 100, 10);
             Double[] times = Stream.of(res)
+                                   .filter(x -> x.solution != null)
                                    .map(x -> x.elapsed)
-                                   .filter(x -> x != 0.0)
                                    .toArray(Double[]::new);
             double mean = Stream.of(times).reduce(0.0, Double::sum) / times.length;
             System.out.println(i + " " + times.length + " " + mean);
+
+            log += i + ": " 
+                + Stream.of(times)
+                        .map(x -> String.valueOf(x))
+                        .collect(Collectors.joining(", "))
+                + "\n";
+        }
+
+        FileOutputStream stream;
+        try {
+            stream = new FileOutputStream("../log.txt");
+            stream.write(log.getBytes());
+            stream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
