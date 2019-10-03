@@ -114,7 +114,7 @@ local optima에 빠진 경우, random state에서 다시 시작한다.
 |---|---|---|---|---|---|---|---|
 | converge | 5.22e-6 | 3.92e-6 | 1.8146e-4 | 2.1718e-4 | 5.241e-4 | 9.8398e-4 | 1.319126e-3 |
 
-<img src="../rsrc/a2_gp_converge.png" width="60%">
+<img src="../rsrc/a2_gp_converge.png" width="40%">
 
 2. Random restart 횟수
 
@@ -122,7 +122,7 @@ local optima에 빠진 경우, random state에서 다시 시작한다.
 |---|---|---|---|---|---|---|---|
 | #restart | 8.44 | 10.55 | 333.67 | 286.39 | 1246.6 | 3669.96 | 18173.25 |
 
-<img src="../rsrc/a2_gp_restart.png" width="60%">
+<img src="../rsrc/a2_gp_restart.png" width="40%">
 
 3. 전체 문제 해결 시간
 
@@ -133,7 +133,7 @@ Board size 4 ~ 10, 보드 크기당 100회 실험, 전체 문제 해결 시간�
 | elapsed time | 0.005418 | 0.002542 | 0.13647 | 0.13419 | 0.86582 | 3.88714 | 26.3717 |
 | success rate | 0.79 | 0.83 | 1 | 1 | 1 | 1 | 1 |
 
-<img src="../rsrc/a2_gp_total.png" width="60%">
+<img src="../rsrc/a2_gp_total.png" width="40%">
 
 ### 5. Log
 
