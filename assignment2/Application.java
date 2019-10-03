@@ -41,7 +41,7 @@ public class Application {
 
         HillClimbing sol = new HillClimbing(Integer.MAX_VALUE, new HighestNeighbor());
         // iterating with board size i
-        for (int i = 4; i <= 5; ++i) {
+        for (int i = 4; i <= 10; ++i) {
             // experiment
             App.Info[] res = App.experiment(sol, i, 100, 10);
             // get running time
