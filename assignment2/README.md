@@ -108,7 +108,13 @@ local optima에 빠진 경우, random state에서 다시 시작한다.
 
 ### 4. Experiment
 
+- Domain: Board size 4 ~ 10
+- #Experiment: 100
+- Visualization: Table, Gaussian Process Regression
+
 1. 수렴 시간
+
+한번의 trial이 optima로 수렴하기 위해 걸리는 시간의 평균.
 
 | board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|
@@ -118,6 +124,8 @@ local optima에 빠진 경우, random state에서 다시 시작한다.
 
 2. Random restart 횟수
 
+solution을 얻기 위한 평균 trial 수.
+
 | board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|
 | #restart | 8.44 | 10.55 | 333.67 | 286.39 | 1246.6 | 3669.96 | 18173.25 |
@@ -126,7 +134,7 @@ local optima에 빠진 경우, random state에서 다시 시작한다.
 
 3. 전체 문제 해결 시간
 
-Board size 4 ~ 10, 보드 크기당 100회 실험, 전체 문제 해결 시간의 평균 및 성공 확률
+전체 문제 해결 시간의 평균 및 성공 확률
 
 | board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|
@@ -134,6 +142,22 @@ Board size 4 ~ 10, 보드 크기당 100회 실험, 전체 문제 해결 시간�
 | success rate | 0.79 | 0.83 | 1 | 1 | 1 | 1 | 1 |
 
 <img src="../rsrc/a2_gp_total.png" width="40%">
+
+- Correlation Coefficient
+
+| - | converge | restart | total |
+|---|---|---|---|
+| converge | 1.0 | 0.853203 | 0.822730 |
+| restart | - | 1.0 | 0.998423 |
+| total | - | - | 1.0 |
+
+앞서 그래프와 선형 상관계수 표에서 볼 수 있듯이, 3가지 요소 모두 높은 상관성을 띈다. 특히 전체 문제 해결 시간과 Random Restart 횟수는 선형 변환 외에 어떤 연산도 취하지 않은 거의 같은 데이터로 볼 수 있다. 
+
+이를 통해서 알고리즘의 특성을 확인할 수 있었는데, board의 크기에 따라 증가하는 neighbor의 수가 선형 관계임에도 불구하고, local search 역시 searching space에 영향을 받아 급격히 탐색 시간이 늘어날 수 있다는 점이었다.
+
+또한, trial의 수를 줄이기 위해 Random Walk를 사용한다면, converge time은 얼마나 늘어날지, 그 증가 속도가 Random Restart보다 효율적일지 확인해 볼 필요가 있어 보인다. 
+
+기존의 탐색 알고리즘보다 backtracking을 하지 않아 메모리 사용량이 적고, neighbor만을 가지고 탐색을 하므로 local optima에 빠질 수 있다는 여러 차이점도 있었지만, 결국은 searching space의 크기에 비례하여 탐색 시간이 기하급수적으로 증가할 수 있다는 단점을 가지고 있었다. 
 
 ### 5. Log
 
