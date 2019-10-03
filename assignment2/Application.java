@@ -2,6 +2,7 @@ package assignment2;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
 import java.util.stream.Collectors;
 import assignment2.hillclimbing.HighestNeighbor;
@@ -40,7 +41,7 @@ public class Application {
 
         HillClimbing sol = new HillClimbing(Integer.MAX_VALUE, new HighestNeighbor());
         // iterating with board size i
-        for (int i = 4; i <= 10; ++i) {
+        for (int i = 4; i <= 5; ++i) {
             // experiment
             App.Info[] res = App.experiment(sol, i, 100, 10);
             // get running time
@@ -49,12 +50,45 @@ public class Application {
                                    .filter(x -> x != 0.0)
                                    .toArray(Double[]::new);
             // compute mean
-            double mean = Stream.of(times).reduce(0.0, Double::sum) / times.length;
-            System.out.println(i + " " + times.length + " " + mean);
+            double timesMean =
+                Stream.of(times).reduce(0.0, Double::sum) / times.length;
+
+            // get number of trying
+            Integer[] ntries = sol.meta.stream()
+                                       .map(x -> x.numTry)
+                                       .toArray(Integer[]::new);
+            double ntriesMean =
+                (double)Stream.of(ntries).reduce(0, Integer::sum) / ntries.length;
+
+            // get average times per try in second unit
+            Double[] timesPerTry =
+                sol.meta.stream()
+                        .map(x -> DoubleStream.of(x.timePerTry)
+                                                   .average()
+                                                   .getAsDouble())
+                        .toArray(Double[]::new);
+            double timesPerTryMean =
+                Stream.of(timesPerTry).reduce(0.0, Double::sum) / timesPerTry.length;
+
+            System.out.println(
+                i + " " + times.length
+                + " " + timesMean
+                + " " + ntriesMean
+                + " " + timesPerTryMean);
 
             // write log
-            log += i + " | " 
+            log += "| " + i + " times | " 
                 + Stream.of(times)
+                        .map(x -> String.valueOf(x))
+                        .collect(Collectors.joining(" | "))
+                + " |\n"
+                + "| " + i + " try | "
+                + Stream.of(ntries)
+                        .map(x -> String.valueOf(x))
+                        .collect(Collectors.joining(" | "))
+                + " |\n"
+                + "| " + i + " timesPerTry | "
+                + Stream.of(timesPerTry)
                         .map(x -> String.valueOf(x))
                         .collect(Collectors.joining(" | "))
                 + " |\n";
