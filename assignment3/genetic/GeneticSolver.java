@@ -1,9 +1,7 @@
 package assignment3.genetic;
 
-import java.util.ArrayUtils;
 
-
-public <T> abstract class GeneticSolver<T> {
+public abstract class GeneticSolver<T> {
     private Gene<T> gene;
 
     private int initialNumber;
@@ -20,12 +18,12 @@ public <T> abstract class GeneticSolver<T> {
                          int crossNumber,
                          int mutationNumber) {
         if (parentNumber <= 0) {
-            throw IllegalArgumentException(
+            throw new IllegalArgumentException(
                 "GeneticSolver.parentNumber should be bigger than zero");
         }
 
         this.gene = gene;
-        htis.initialNumber = initialNumber;
+        this.initialNumber = initialNumber;
         this.parentNumber = parentNumber;
         this.crossNumber = crossNumber;
         this.mutationNumber = mutationNumber;
