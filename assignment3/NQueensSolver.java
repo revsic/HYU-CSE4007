@@ -18,15 +18,26 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
     public NQueensState[] findSolution(NQueensState[] generation) {
         ArrayList<NQueensState> sol = new ArrayList<NQueensState>();
         for (NQueensState state : generation) {
-            if (state.isSolved()) {
-                sol.add(sol);
+            if (state.make().isSolved()) {
+                sol.add(state);
             }
         }
 
         return sol.toArray(new NQueensState[sol.size()]);
     }
 
-    public int[][] solve(int size) {
+    public static final int MAX_ITER = 500;
 
+    public int[][] solve(int size) {
+        NQueensState[] res = run(MAX_ITER);
+        if (res != null) {
+            int[][] sol = new int[2][size];
+            for (int i = 0; i < size; ++i) {
+                sol[i][0] = i;
+                sol[i][1] = res[0].value(0);
+            }
+            return sol;
+        }
+        return null;
     }
 }
