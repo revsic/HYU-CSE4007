@@ -3,6 +3,7 @@ package assignment3;
 import java.util.Random;
 
 import assignment3.genetic.Gene;
+import problem.nqueens.NQueensObjective;
 
 
 public class NQueensGene implements Gene<NQueensState> {
@@ -31,7 +32,7 @@ public class NQueensGene implements Gene<NQueensState> {
 
         for (int i = 0; i < tournament; ++i) {
             int idx = gen.nextInt(family.length);
-            double chosen = family[idx].eval();
+            double chosen = NQueensObjective.run(family[idx].make());
             if (score < chosen) {
                 score = chosen;
                 state = family[idx];
