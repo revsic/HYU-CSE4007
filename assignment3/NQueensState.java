@@ -57,6 +57,6 @@ public class NQueensState {
             arr[i] = gen.nextInt(size);
         }
 
-        return new NQueensState(state);
+        return new NQueensState(arr);
     }
 }
