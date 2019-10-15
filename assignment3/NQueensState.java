@@ -3,7 +3,6 @@ package assignment3;
 import java.util.Random;
 
 import problem.nqueens.NQueens;
-import problem.nqueens.NQueensObjective;
 
 
 public class NQueensState {
@@ -29,24 +28,12 @@ public class NQueensState {
         return state[idx];
     }
 
-    public int[] getState() {
-        return state;
-    }
-
-    private NQueens make() {
+    public NQueens make() {
         NQueens queens = new NQueens();
         for (int i = 0; i < size; ++i) {
             queens.setPos(i, state[i]);
         }
         return queens;
-    }
-
-    public double eval() {
-        return NQueensObjective.run(make());
-    }
-
-    public boolean isSolved() {
-        return make().isSolved();
     }
 
     public static NQueensState random(int size) {
