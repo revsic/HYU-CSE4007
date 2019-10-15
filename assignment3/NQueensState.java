@@ -29,7 +29,7 @@ public class NQueensState {
     }
 
     public NQueens make() {
-        NQueens queens = new NQueens();
+        NQueens queens = new NQueens(size);
         for (int i = 0; i < size; ++i) {
             queens.setPos(i, state[i]);
         }
