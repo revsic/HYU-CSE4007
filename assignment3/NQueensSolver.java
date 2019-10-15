@@ -34,7 +34,7 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
             int[][] sol = new int[size][2];
             for (int i = 0; i < size; ++i) {
                 sol[i][0] = i;
-                sol[i][1] = res[0].value(0);
+                sol[i][1] = res[0].value(i);
             }
             return sol;
         }
