@@ -12,7 +12,7 @@ public class NQueensGene implements Gene<NQueensState> {
 
     public NQueensGene(int size, int tournament) {
         this.size = size;
-        this.tournament = tournament
+        this.tournament = tournament;
     }
 
     public NQueensState[] newArray(int size) {
@@ -32,7 +32,7 @@ public class NQueensGene implements Gene<NQueensState> {
         for (int i = 0; i < tournament; ++i) {
             int idx = gen.nextInt(family.length);
             double chosen = family[idx].eval();
-            if (score < chosen)) {
+            if (score < chosen) {
                 score = chosen;
                 state = family[idx];
             }
