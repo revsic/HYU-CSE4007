@@ -1,6 +1,5 @@
 package assignment2;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.util.stream.DoubleStream;
 import java.util.stream.Stream;
