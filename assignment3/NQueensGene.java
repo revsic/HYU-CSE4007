@@ -29,6 +29,7 @@ public class NQueensGene implements Gene<NQueensState> {
      * @param size int, size of the board.
      * @return NQueensState[], new array.
      */
+    @Override
     public NQueensState[] newArray(int size) {
         return new NQueensState[size];
     }
@@ -37,6 +38,7 @@ public class NQueensGene implements Gene<NQueensState> {
      * Initialize first generation.
      * @return NQueensState, random initialized state.
      */
+    @Override
     public NQueensState initialState() {
         return NQueensState.random(size);
     }
@@ -46,6 +48,7 @@ public class NQueensGene implements Gene<NQueensState> {
      * @param family NQueensState[], previous generation.
      * @return NQueensState, parent gene.
      */
+    @Override
     public NQueensState select(NQueensState[] family) {
         Random gen = new Random();
 
@@ -70,6 +73,7 @@ public class NQueensGene implements Gene<NQueensState> {
      * @param parents NQueensState[], parent genes.
      * @return NQueensState, mixed state.
      */
+    @Override
     public NQueensState crossover(NQueensState[] parents) {
         Random gen = new Random();
         NQueensState state = new NQueensState(size);
@@ -85,6 +89,7 @@ public class NQueensGene implements Gene<NQueensState> {
      * @param parents NQueensState[], parent genes.
      * @return NQueensState, mutated state.
      */
+    @Override
     public NQueensState mutate(NQueensState[] parents) {
         return null;
     }
