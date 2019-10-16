@@ -23,6 +23,6 @@ public class Application {
         String path = args[1];
 
         NQueensSolver.Param param = new NQueensSolver.Param(5000, 500, 4500, 0);
-        App.run(new NQueensSolver(size, param), size, path);
+        App.run(new NQueensSolver(size, param, 500), size, path);
     }
 }
