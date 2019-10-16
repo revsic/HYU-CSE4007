@@ -1,4 +1,4 @@
-# Assignment3: Hill climbing
+# Assignment3: Genetic Algorithm.
 Solve the N-Queens problem with Genetic Algorithm.
 
 ## Environments
@@ -25,20 +25,20 @@ java assignment3.Application 7 /abs/path/to/save/result
 board size 7
 ```
 >Genetic Algorithm
-Location : 2 0 5 1 4 6 3
-Time : 0.021
+Location : 4 6 1 5 2 0 3
+Time : 0.043
 ```
 board size 8
 ```
 >Genetic Algorithm
-Location : 4 7 3 0 2 5 1 6
-Time : 0.161
+Location : 2 4 1 7 0 6 3 5
+Time : 0.086
 ```
 board size 12
 ```
 >Genetic Algorithm
-Location : 8 4 7 3 0 6 1 5 2
-Time : 0.207
+Location : 11 4 8 5 2 9 3 0 7 10 6 1
+Time : 0.197
 ```
 
 ## Methods
