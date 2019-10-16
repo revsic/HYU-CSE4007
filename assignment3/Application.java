@@ -39,7 +39,7 @@ public class Application {
 
         int[] paramList = { 500, 1000, 3000 };
         for (int spec : paramList) {
-            NQueensSolver.Param param = new NQueensSolver.Param(7, 5000, spec, 5000 - spec, 0);
+            NQueensSolver.Param param = new NQueensSolver.Param(7, 5000, 5000 - spec, spec, 0);
 
             System.out.println("param: " + spec);
             ArrayList<Double> totalTimes = new ArrayList<Double>();

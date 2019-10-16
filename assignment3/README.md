@@ -186,13 +186,13 @@ Number of selections (Crossover = Initial - Selection) - 성공횟수/스텝, [s
 | S-1K | 100/0 | 100/0 | 100/0.25 | 100/0.37 | 99/1.72 | 92/3.09 | 52/5.05 | 91/1.50 |
 | S-3K | 100/0 | 100/0 | 100/0.44 | 100/0.76 | 87/2.06 | 53/3.16 | 16/4.56 | 79/1.57 |
 
-Number of crossover (Selection = Initial - Crossover)
+Number of crossover (Selection = Initial - Crossover) - 성공횟수/스텝, [crossover.txt](./log/crossover.txt)
 
 | #crossover | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
 |---|---|---|---|---|---|---|---|---|
-| C500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| C-1K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| C-3K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| C500 | 100/0 | 100/0 | 86/0.70 | 87/1.0 | 35/2.65 | 22/3.95 | 5/5.2 | 62/1.94 |
+| C-1K | 100/0 | 100/0 | 96/0.65 | 93/0.87 | 58/2.05 | 24/3.33 | 9/5.33 | 68/1.74 |
+| C-3K | 100/0 | 100/0 | 100/0.3 | 100/0.54 | 97/1.75 | 78/3.37 | 40/4.55 | 87/1.50 |
 
 - Correlation Coefficient
 
@@ -204,14 +204,3 @@ Number of crossover (Selection = Initial - Crossover)
 | crossover | - | - | - | 0 |
 
 <해설>
-
-3. Method variant
-
-Subsequence crossover vs Element-wise crossover
-
-| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
-|---|---|---|---|---|---|---|---|---|
-| E5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| E10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| E30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| E50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
