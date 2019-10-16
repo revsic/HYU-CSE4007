@@ -37,9 +37,9 @@ public class Application {
     public static void experiment() {
         String log = "";
 
-        int[] paramList = { 5, 10, 30, 50 };
+        int[] paramList = { 100, 500, 1000, 5000, 10000 };
         for (int spec : paramList) {
-            NQueensSolver.Param param = new NQueensSolver.Param(spec, 5000, 1000, 4000, 0);
+            NQueensSolver.Param param = new NQueensSolver.Param(7, spec, (int)(spec * 0.2), (int)(spec * 0.8), 0);
 
             System.out.println("param: " + spec);
             ArrayList<Double> totalTimes = new ArrayList<Double>();
