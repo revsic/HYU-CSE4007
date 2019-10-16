@@ -11,11 +11,47 @@ import problem.nqueens.Solution;
  */
 public class NQueensSolver extends GeneticSolver<NQueensState> implements Solution {
     /**
+     * Parameters for GeneticSolver.
+     */
+    public static class Param {
+        public int initialNumber;
+
+        public int parentNumber;
+
+        public int crossNumber;
+
+        public int mutationNumber;
+
+        /**
+         * Construct new parameter family.
+         * @param initial int, the number of the initial state.
+         * @param parent int, the number of the selected state, it should be positive number.
+         * @param cross int, the number of the mixed state.
+         * @param mutation int, the number of the mutant.
+         */
+        public Param(int initial, int parent, int cross, int mutation) {
+            this.initialNumber = initial;
+            this.parentNumber = parent;
+            this.crossNumber = cross;
+            this.mutationNumber = mutation;
+        }
+    }
+    
+    private Param param;
+
+    /**
      * Construct N-Queens solver.
      * @param size size of the board.
+     * @param param parameter family.
      */
-    public NQueensSolver(int size) {
-        super(new NQueensGene(size, 7), 5000, 500, 4500, 0);
+    public NQueensSolver(int size, Param param) {
+        super(new NQueensGene(size, 7),
+              param.initialNumber,
+              param.parentNumber,
+              param.crossNumber,
+              param.mutationNumber);
+
+        this.param = param;
     }
 
     /**
