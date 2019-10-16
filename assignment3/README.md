@@ -22,6 +22,15 @@ java assignment3.Application 7 /abs/path/to/save/result
 ```
 
 ## Sample result
+
+### Hyperparameter
+- tournament==7
+- initialNumber==5000
+- parentNumber==1000
+- crossNumber==4000
+- mutationNumber==0
+
+### Output
 board size 7
 ```
 >Genetic Algorithm
@@ -45,14 +54,42 @@ Time : 0.197
 
 ### 1. Genetic Algorithm
 
-### 2. Objective
+유전자(gene, chromosome)라는 상태를 두고, 정책에 따라 유전자를 변이, 평가하며 하나의 군(population)과 세대(generation)를 구성한다. 세대가 지날 수록 군이 문제 해결이라는 목표에 가까워지도록 적절히 변이 정책과 평가 정책을 구성하여 세대 간 정보 전달 과정을 실험하는 알고리즘이다.
 
-### 2.0. Hyperparameter
+변이 과정은 크게 선택, 합성, 돌연변이로 이뤄진다.
+1. 선택 : 이전 세대에서 다음 세대로 전달할 유전개체를 선택
+2. 합성 : 유전 정보를 합성하여 새로운 개체를 형성
+3. 돌연변이 : 유전개체 하나의 정보를 변형
+
+세 번의 변이 과정에서 생성하는 새로운 개체의 수 또한 변이 정책의 일종으로, 군을 구성하는 인구수 또한 조절 가능하다. 선택 과정에서 평가 정책에 따라 가능성 있는 유전개체를 선택, 전달하여 문제 해결을 가능케 한다.
+
+### 2. Policy
+
+### 2.0. State definition
+
+상태는 각 열에 Queen이 위치하고 있는 행의 인덱스로 구성된 N칸 정수 배열을 가정하였다. 이후 변이 과정에서는 배열의 각 값을 [0, N)의 범위 내에서 수정한다.
 
 ### 2.1. Intialize
 
-### 2.2. Selection - Tournament
+각 배열의 값을 [0, N) 사이의 임의 수로 채워넣었다.
 
+### 2.2. Selection
+
+다음 세대로 전달할 유전개체를 선택하는 과정이다. 선택 과정에는 크게 두가지 방법론이 존재하며, Tournament와 Propertional selection이다.
+
+- Proportional selection
+
+해당 유전개체의 Evalution을 전체에서의 비율로 환산하여 반영하는 방법론이다. 크게는 비율을 확률 분포로 해석, S개의 샘플을 채취하여 다음 세대로 전달한다.  
+
+### 2.2.1. Tournament
+
+Tournament는 이전 세대에서 K개를 샘플링하여 가장 Evaluation 수치가 높은 샘플만을 다음 세대로 전달하는 방식이다. 총 S번 반복하여 N개의 샘플을 다음 세대로 전달하게 된다.
+
+### 2.2.2. Evalution objective
+
+유전개체를 평가하는 방식으로는 [Hill-Climbing](../assignment2)에서 이용하였던 Objective를 재활용한다. 
+
+---
 N-Queens의 Constraint는 다음과 같다.
 - 각 행에는 하나의 Queen만이 존재한다.
 - 각 열에는 하나의 Queen만이 존재한다.
@@ -71,9 +108,21 @@ where row, col = N size array
 
 주어진 NxN boolean matrix가 constraint를 만족한다면 objective는 0에 수렴할 것이고, 더 많은 constraint를 어길수록 큰 값을 가지게 된다.
 
+---
+
 ### 2.3. Crossover
 
+Crossover은 두 유전개체를 합성하는 과정이다. 알고리즘을 이용하는 사람이 합성 방법을 제시하면, Genetic Solver은 이를 이용하여 유전개체를 합성, 다음 세대로 전달한다. 
+
+이번 [assignment3](.)에서는 다음과 같은 방법을 채택하였다.
+
+1. [0, N) 범위의 임의의 수 P를 생성한다.
+2. 이전 세대 유전개체 중 2개를 샘플링 한다 (G1, G2).
+3. G1의 유전배열에서 [0, P) 만큼을, G2의 유전배열에서 [P, N) 만큼을 가져와 연결한다.
+
 ### 2.4. Mutation
+
+Mutation은 자가 변조 과정이다. 이번 실험에서는 이용하지 않았다. 
 
 ### 3. Experiment
 
