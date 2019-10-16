@@ -194,26 +194,6 @@ Number of crossover (Selection = Initial - Crossover) - 성공횟수/스텝, [cr
 | C-1K | 100/0 | 100/0 | 96/0.65 | 93/0.87 | 58/2.05 | 24/3.33 | 9/5.33 | 68/1.74 |
 | C-3K | 100/0 | 100/0 | 100/0.3 | 100/0.54 | 97/1.75 | 78/3.37 | 40/4.55 | 87/1.50 |
 
-Correlation Coefficient
-
-Number of Success
-
-| - | tournament | initial | selection | crossover |
-|---|---|---|---|---|
-| tournament | 0 | 0 | 0 | 0 |
-| initial | - | 0 | 0 | 0 |
-| selection | - | - | 0 | 0 |
-| crossover | - | - | - | 0 |
-
-Stepwise
-
-| - | tournament | initial | selection | crossover |
-|---|---|---|---|---|
-| tournament | 0 | 0 | 0 | 0 |
-| initial | - | 0 | 0 | 0 |
-| selection | - | - | 0 | 0 |
-| crossover | - | - | - | 0 |
-
 토너먼트의 수가 줄어들수록, 인구수가 많을수록, 선택된 유전 개체의 수가 적을수록, 합성이 많을수록 높은 정확도를 나타냈다. 이에 파라미터를 재수정하여 실험해 보았다.
 
 Selected parmaeters
