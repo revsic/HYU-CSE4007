@@ -35,12 +35,14 @@ public abstract class GeneticSolver<T> {
             throw new IllegalArgumentException(
                 "GeneticSolver.parentNumber should be bigger than zero");
         }
-
         this.gene = gene;
+
         this.initialNumber = initialNumber;
         this.parentNumber = parentNumber;
         this.crossNumber = crossNumber;
         this.mutationNumber = mutationNumber;
+
+        this.meta = new ArrayList<Meta>(MAX_METADATA);
     }
 
     /**
