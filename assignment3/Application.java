@@ -40,7 +40,7 @@ public class Application {
         // iterating with board size i
         for (int i = 4; i <= 10; ++i) {
             // experiment
-            NQueensSolver sol = new NQueensSolver(i, param, 500);
+            NQueensSolver sol = new NQueensSolver(i, param, 50);
             App.Info[] res = App.experiment(sol, i, 100, 10);
             // get running time
             Double[] times = Stream.of(res)
@@ -53,6 +53,7 @@ public class Application {
 
             // get number of trying
             Integer[] ntries = sol.meta.stream()
+                                       .filter(x -> x.solved)
                                        .map(x -> x.ntry)
                                        .toArray(Integer[]::new);
             double ntriesMean =
