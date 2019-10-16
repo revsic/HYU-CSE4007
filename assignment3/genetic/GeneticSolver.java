@@ -1,5 +1,7 @@
 package assignment3.genetic;
 
+import java.util.ArrayList;
+
 
 /**
  * Implementation of Genetic algorithm.
@@ -9,12 +11,12 @@ public abstract class GeneticSolver<T> {
     private Gene<T> gene;
 
     private int initialNumber;
-
     private int parentNumber;
-
     private int crossNumber;
-
     private int mutationNumber;
+
+    public ArrayList<Meta> meta;
+    public static final int MAX_METADATA = 100;
 
     /**
      * Construct new genetic solver.
@@ -107,10 +109,43 @@ public abstract class GeneticSolver<T> {
             // find solution
             T[] sol = findSolution(state);
             if (sol != null) {
+                writeMetaData(i, true);
                 return sol;
             }
         }
 
+        writeMetaData(maxIter, false);
         return null;
+    }
+
+    /**
+     * Write metadata thread safely.
+     * @param ntry int, number of try.
+     * @param solved boolean, whether GeneticSolver is solved or not.
+     */
+    private void writeMetaData(int ntry, boolean solved) {
+        Meta metadata = new Meta(ntry, solved);
+        synchronized(this) {
+            // resize array
+            if (meta.size() >= MAX_METADATA) {
+                meta.remove(0);
+            }
+            meta.add(metadata);
+        }
+    }
+
+    public static class Meta {
+        public int ntry;
+        public boolean solved;
+
+        /**
+         * Construct meta data with given parameters.
+         * @param ntry int, number of try.
+         * @param solved boolean, whether GeneticSolver is solved or not.
+         */
+        public Meta(int ntry, boolean solved) {
+            this.ntry = ntry;
+            this.solved = solved;
+        }
     }
 }
