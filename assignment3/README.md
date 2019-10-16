@@ -194,7 +194,7 @@ Number of crossover (Selection = Initial - Crossover) - 성공횟수/스텝, [cr
 | C-1K | 100/0 | 100/0 | 96/0.65 | 93/0.87 | 58/2.05 | 24/3.33 | 9/5.33 | 68/1.74 |
 | C-3K | 100/0 | 100/0 | 100/0.3 | 100/0.54 | 97/1.75 | 78/3.37 | 40/4.55 | 87/1.50 |
 
-- Correlation Coefficient
+Correlation Coefficient
 
 | - | tournament | initial | selection | crossover |
 |---|---|---|---|---|
@@ -203,4 +203,16 @@ Number of crossover (Selection = Initial - Crossover) - 성공횟수/스텝, [cr
 | selection | - | - | 0 | 0 |
 | crossover | - | - | - | 0 |
 
-<해설>
+Selected parmaeters
+- tournament==5
+- initialNumber==10000
+- parentNumber==500
+- crossNumber==4500
+- mutationNumber==0
+
+Retesting
+| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|
+| converge | 0.0398 | 0.02173 | 0.03479 | 0.04835 | 0.10944 | 0.17416 | 0.23432 |
+| success | 100 | 100 | 99 | 100 | 99 | 97 | 59 |
+| step | 0 | 0 | 0.28 | 0.49 | 2.22 | 4.45 | 6.71 |
