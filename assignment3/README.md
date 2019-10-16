@@ -29,19 +29,20 @@ java assignment3.Application 7 /abs/path/to/save/result
 - parentNumber==1000
 - crossNumber==4000
 - mutationNumber==0
+- maxIter==50
 
 ### Output
 board size 7
 ```
 >Genetic Algorithm
-Location : 4 6 1 5 2 0 3
-Time : 0.043
+Location : 4 2 0 5 3 1 6
+Time : 0.029
 ```
 board size 8
 ```
 >Genetic Algorithm
-Location : 2 4 1 7 0 6 3 5
-Time : 0.086
+Location : 2 7 3 6 0 5 1 4
+Time : 0.088
 ```
 board size 12
 ```
@@ -124,7 +125,7 @@ Crossover는 두 유전 개체를 합성하는 과정이다. 알고리즘을 이
 
 Mutation은 자가 변조 과정이다. 이번 실험에서는 이용하지 않았다. 
 
-### 3. Experiment
+## Experiment
 
 - Setting
     - Domain: Board size 4 ~ 10
@@ -137,20 +138,22 @@ Mutation은 자가 변조 과정이다. 이번 실험에서는 이용하지 않�
     - parentNumber==1000
     - crossNumber==4000
     - mutationNumber==0
+    - maxIter==50
 
 1. 문제 해결 시간
 
-한번의 Genetic Simulation이 수렴하기 위해 걸리는 시간의 평균.
+한번의 Genetic Simulation이 수렴하기 위해 걸리는 시간의 평균 (sec, [elapsed_time.txt](./log/elapsed_time.txt))
 
 | board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|
-| converge | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| converge | 0.04425 | 0.01990 | 0.04699 | 0.04760 | 0.10779 | 0.19170 | 0.37460 |
+| success | 100 | 100 | 99 | 100 | 100 | 95 | 41 |
 
-한번의 Genetic Simulation이 수렴하기 위해 걸리는 Step의 수.
+한번의 Genetic Simulation이 수렴하기 위해 걸리는 Step의 수의 100회 평균 (횟수, [elapsed_time.txt](./log/elapsed_time.txt))
 
 | board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|
-| step | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| step | 0 | 0 | 0.23 | 0.38 | 1.82 | 3.36 | 5.34 |
 
 2. Hyperparameter Search
 
@@ -210,3 +213,7 @@ Subsequence crossover vs Element-wise crossover
 | E10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | E30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | E50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+
+## Log
+
+
