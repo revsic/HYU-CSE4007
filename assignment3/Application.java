@@ -93,9 +93,9 @@ public class Application {
 
             System.out.println(
                 "param: " + spec
-                + " " + totalTries.stream().mapToDouble(x -> x).average().getAsDouble()
+                + " " + totalSuccess.stream().mapToInt(x -> x).average().getAsDouble()
                 + " " + totalTimes.stream().mapToDouble(x -> x).average().getAsDouble()
-                + " " + totalSuccess.stream().mapToDouble(x -> (double)x).average().getAsDouble());
+                + " " + totalTries.stream().mapToDouble(x -> x).average().getAsDouble());
         }
 
         // write log as file
