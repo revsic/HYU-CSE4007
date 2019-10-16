@@ -39,12 +39,15 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
     
     private Param param;
 
+    public int maxGen;
+
     /**
      * Construct N-Queens solver.
      * @param size size of the board.
      * @param param parameter family.
+     * @param maxGen maximum number of generations.
      */
-    public NQueensSolver(int size, Param param) {
+    public NQueensSolver(int size, Param param, int maxGen) {
         super(new NQueensGene(size, 7),
               param.initialNumber,
               param.parentNumber,
@@ -52,6 +55,7 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
               param.mutationNumber);
 
         this.param = param;
+        this.maxGen = maxGen;
     }
 
     /**
@@ -85,8 +89,6 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
         return null;
     }
 
-    public static final int MAX_ITER = 500;
-
     /**
      * Solve the problem.
      * @param size size of the board.
@@ -94,7 +96,7 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
      */
     @Override
     public int[][] solve(int size) {
-        NQueensState[] res = run(MAX_ITER);
+        NQueensState[] res = run(maxGen);
         if (res != null) {
             int[][] sol = new int[size][2];
             for (int i = 0; i < size; ++i) {
