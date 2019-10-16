@@ -196,12 +196,25 @@ Number of crossover (Selection = Initial - Crossover) - 성공횟수/스텝, [cr
 
 Correlation Coefficient
 
+Number of Success
+
 | - | tournament | initial | selection | crossover |
 |---|---|---|---|---|
 | tournament | 0 | 0 | 0 | 0 |
 | initial | - | 0 | 0 | 0 |
 | selection | - | - | 0 | 0 |
 | crossover | - | - | - | 0 |
+
+Stepwise
+
+| - | tournament | initial | selection | crossover |
+|---|---|---|---|---|
+| tournament | 0 | 0 | 0 | 0 |
+| initial | - | 0 | 0 | 0 |
+| selection | - | - | 0 | 0 |
+| crossover | - | - | - | 0 |
+
+토너먼트의 수가 줄어들수록, 인구수가 많을수록, 선택된 유전 개체의 수가 적을수록, 합성이 많을수록 높은 정확도를 나타냈다. 이에 파라미터를 재수정하여 실험해 보았다.
 
 Selected parmaeters
 - tournament==5
@@ -216,3 +229,5 @@ Retesting
 | converge | 0.0398 | 0.02173 | 0.03479 | 0.04835 | 0.10944 | 0.17416 | 0.23432 |
 | success | 100 | 100 | 99 | 100 | 99 | 97 | 59 |
 | step | 0 | 0 | 0.28 | 0.49 | 2.22 | 4.45 | 6.71 |
+
+10회 이상에서 대략 40%였던 정확도가 60%까지 오른 것을 확인할 수 있었다.
