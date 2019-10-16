@@ -77,9 +77,17 @@ public class NQueensGene implements Gene<NQueensState> {
     public NQueensState crossover(NQueensState[] parents) {
         Random gen = new Random();
         NQueensState state = new NQueensState(size);
+        
+        int point = gen.nextInt(size);
+        NQueensState target1 = parents[gen.nextInt(parents.length)];
+        NQueensState target2 = parents[gen.nextInt(parents.length)];
+
         for (int i = 0; i < size; ++i) {
-            int idx = gen.nextInt(parents.length);
-            state.assign(i, parents[idx].value(i));
+            if (i < point) {
+                state.assign(i, target1.value(i));
+            } else {
+                state.assign(i, target2.value(i));
+            }
         }
         return state;
     }
