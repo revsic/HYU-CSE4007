@@ -17,17 +17,17 @@ public class Application {
      * @exception java.lang.NumberFormatException exception can occur in Integer.parseInt.
      */
     public static void main(String[] args) {
-        // if (args.length < 2) {
-        //     System.out.println("usage: [size of board: INT] [path: STRING]");
-        //     return;
-        // }
+        if (args.length < 2) {
+            System.out.println("usage: [size of board: INT] [path: STRING]");
+            return;
+        }
 
-        // int size = Integer.parseInt(args[0]);
-        // String path = args[1];
+        int size = Integer.parseInt(args[0]);
+        String path = args[1];
 
-        // NQueensSolver.Param param = new NQueensSolver.Param(7, 5000, 1000, 4000, 0);
-        // App.run(new NQueensSolver(size, param, 500), size, path);
-        experiment();
+        NQueensSolver.Param param = new NQueensSolver.Param(7, 5000, 1000, 4000, 0);
+        App.run(new NQueensSolver(size, param, 50), size, path);
+        // experiment();
     }
 
     /**
