@@ -61,35 +61,31 @@ Time : 0.197
 2. 합성 : 유전 정보를 합성하여 새로운 개체를 형성
 3. 돌연변이 : 유전개체 하나의 정보를 변형
 
-세 번의 변이 과정에서 생성하는 새로운 개체의 수 또한 변이 정책의 일종으로, 군을 구성하는 인구수 또한 조절 가능하다.
+변이 과정에서 생성하는 새로운 개체의 수 또한 변이 정책의 일종으로, 군을 구성하는 인구수 또한 조절 가능하다.
 
 선택 과정에서 평가 정책에 따라 가능성 있는 유전개체를 선택, 전달하여 문제 해결을 가능케 한다.
 
 ### 2. Policy
 
-### 2.0. State definition
+#### 2.0. State definition
 
-상태는 각 열에 Queen이 위치하고 있는 행의 인덱스로 구성된 N칸 정수 배열을 가정하였다. 이후 변이 과정에서는 배열의 각 값을 [0, N)의 범위 내에서 수정한다.
+각 열에 Queen이 위치하고 있는 행의 인덱스로 구성된 N칸 정수 배열을 가정하였다. 이후 변이 과정에서는 배열의 각 값을 [0, N)의 범위 내에서 수정한다.
 
-### 2.1. Intialize
+#### 2.1. Intialize
 
-각 배열의 값을 [0, N) 사이의 임의 수로 채워넣었다.
+각 배열의 값을 [0, N) 사이의 임의 수로 채워넣었다 (Uniform distribution).
 
-### 2.2. Selection
+#### 2.2. Selection
 
-다음 세대로 전달할 유전개체를 선택하는 과정이다. 선택 과정에는 크게 두가지 방법론이 존재하며, Tournament와 Propertional selection이다.
+다음 세대로 전달할 유전개체를 선택하는 과정이다. 선택 과정에는 크게 두가지 방법론이 존재하며, Tournament와 Proportional selection이 있다. Proportional selection에 대한 설명은 다음으로 미룬다.
 
-- Proportional selection
-
-해당 유전개체의 Evalution을 전체에서의 비율로 환산하여 반영하는 방법론이다. 크게는 각각의 비율을 모아 확률 분포로 해석, S개의 샘플을 채취하여 다음 세대로 전달한다.  
-
-### 2.2.1. Tournament
+#### 2.2.1. Tournament
 
 Tournament는 이전 세대에서 K개를 샘플링하여 가장 Evaluation 수치가 높은 샘플만을 다음 세대로 전달하는 방식이다. 총 S번 반복하여 S개의 샘플을 다음 세대로 전달하게 된다.
 
-### 2.2.2. Evalution objective
+#### 2.2.2. Evalution objective
 
-유전개체를 평가하는 방식으로는 [Hill-Climbing](../assignment2)에서 이용하였던 Objective를 재활용한다. 
+유전개체를 평가하는 방식으로는 [Hill-Climbing](../assignment2#2-objective)에서 이용하였던 Objective를 재활용한다. 
 
 ---
 N-Queens의 Constraint는 다음과 같다.
@@ -112,7 +108,7 @@ where row, col = N size array
 
 ---
 
-### 2.3. Crossover
+#### 2.3. Crossover
 
 Crossover은 두 유전개체를 합성하는 과정이다. 알고리즘을 이용하는 사람이 합성 방법을 제시하면, Genetic Solver은 이를 이용하여 유전개체를 합성, 다음 세대로 전달한다. 
 
@@ -124,7 +120,7 @@ Crossover은 두 유전개체를 합성하는 과정이다. 알고리즘을 이�
 
 <img src="../rsrc/a3_crossover.png" width="60%">
 
-### 2.4. Mutation
+#### 2.4. Mutation
 
 Mutation은 자가 변조 과정이다. 이번 실험에서는 이용하지 않았다. 
 
@@ -150,21 +146,17 @@ Mutation은 자가 변조 과정이다. 이번 실험에서는 이용하지 않�
 |---|---|---|---|---|---|---|---|
 | converge | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
-<img src="../rsrc/a2_gp_converge.png" width="40%">
-
 한번의 Genetic Simulation이 수렴하기 위해 걸리는 Step의 수.
 
 | board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
 |---|---|---|---|---|---|---|---|
 | step | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
-<img src="" width="40%">
-
 2. Hyperparameter Search
 
 Number of tournament
 
-| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
+| #tournament | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
 |---|---|---|---|---|---|---|---|---|
 | T5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | T10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -173,30 +165,29 @@ Number of tournament
 
 Number of initial state (Maintain the ratio of Selection, Crossover, Mutation)
 
-| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
+| #initial | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
 |---|---|---|---|---|---|---|---|---|
-| I5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| I100 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| I500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| I-1K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| I-5K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| I-10K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Number of selections (Crossover = Initial - Selection)
 
-| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
+| #selection | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
 |---|---|---|---|---|---|---|---|---|
-| I5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| S500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| S-1K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| S-3K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 Number of crossover (Selection = Initial - Crossover)
 
-| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
+| #crossover | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
 |---|---|---|---|---|---|---|---|---|
-| I5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| I50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| C500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| C-1K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| C-3K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 - Correlation Coefficient
 
@@ -208,3 +199,14 @@ Number of crossover (Selection = Initial - Crossover)
 | crossover | - | - | - | 0 |
 
 <해설>
+
+3. Method variant
+
+Subsequence crossover vs Element-wise crossover
+
+| board size | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
+|---|---|---|---|---|---|---|---|---|
+| E5 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| E10 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| E30 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| E50 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
