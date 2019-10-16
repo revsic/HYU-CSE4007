@@ -14,6 +14,8 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
      * Parameters for GeneticSolver.
      */
     public static class Param {
+        public int tournament;
+
         public int initialNumber;
 
         public int parentNumber;
@@ -24,12 +26,14 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
 
         /**
          * Construct new parameter family.
+         * @param tournament int, the number of the tournament.
          * @param initial int, the number of the initial state.
          * @param parent int, the number of the selected state, it should be positive number.
          * @param cross int, the number of the mixed state.
          * @param mutation int, the number of the mutant.
          */
-        public Param(int initial, int parent, int cross, int mutation) {
+        public Param(int tournament, int initial, int parent, int cross, int mutation) {
+            this.tournament = tournament;
             this.initialNumber = initial;
             this.parentNumber = parent;
             this.crossNumber = cross;
@@ -48,7 +52,7 @@ public class NQueensSolver extends GeneticSolver<NQueensState> implements Soluti
      * @param maxGen maximum number of generations.
      */
     public NQueensSolver(int size, Param param, int maxGen) {
-        super(new NQueensGene(size, 7),
+        super(new NQueensGene(size, param.tournament),
               param.initialNumber,
               param.parentNumber,
               param.crossNumber,
