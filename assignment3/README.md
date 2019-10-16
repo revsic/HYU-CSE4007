@@ -178,13 +178,13 @@ Number of initial state (Maintain the ratio of Selection, Crossover, Mutation) -
 | I-5K | 100/0 | 100/0 | 100/0.27 | 100/0.43 | 100/1.79 | 100/3.06 | 63/5.11 | 94/1.51 |
 | I-10K | 100/0 | 100/0 | 100/0.07 | 100/0.11 | 100/1.32 | 100/2.63 | 79/4.77 | 97/1.27 |
 
-Number of selections (Crossover = Initial - Selection)
+Number of selections (Crossover = Initial - Selection) - 성공횟수/스텝, [selection.txt](./log/selection.txt)
 
 | #selection | 4 | 5 | 6 | 7 | 8 | 9 | 10 | Total |
 |---|---|---|---|---|---|---|---|---|
-| S500 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| S-1K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
-| S-3K | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| S500 | 100/0 | 100/0 | 100/0.24 | 100/0.39 | 99/1.95 | 95/3.23 | 51/4.92 | 92/1.53 |
+| S-1K | 100/0 | 100/0 | 100/0.25 | 100/0.37 | 99/1.72 | 92/3.09 | 52/5.05 | 91/1.50 |
+| S-3K | 100/0 | 100/0 | 100/0.44 | 100/0.76 | 87/2.06 | 53/3.16 | 16/4.56 | 79/1.57 |
 
 Number of crossover (Selection = Initial - Crossover)
 
