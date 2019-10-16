@@ -106,7 +106,7 @@ public abstract class GeneticSolver<T> {
             state = nextGeneration(state);
             // find solution
             T[] sol = findSolution(state);
-            if (sol.length > 0) {
+            if (sol != null) {
                 return sol;
             }
         }
