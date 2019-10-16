@@ -22,7 +22,7 @@ public class Application {
         int size = Integer.parseInt(args[0]);
         String path = args[1];
 
-        NQueensSolver.Param param = new NQueensSolver.Param(5000, 1000, 4000, 0);
+        NQueensSolver.Param param = new NQueensSolver.Param(7, 5000, 1000, 4000, 0);
         App.run(new NQueensSolver(size, param, 500), size, path);
     }
 }
