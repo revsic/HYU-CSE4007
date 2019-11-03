@@ -16,7 +16,8 @@ def timer(func):
 
 @timer
 def solve(num_queens, const_fn):
-    x = [[z3.Int(f'x_{row}_{col}') for col in range(num_queens)]
+    x = [[z3.Int(f'x_{row}_{col}')
+         for col in range(num_queens)]
          for row in range(num_queens)]
     const = const_fn(x, num_queens)
 
