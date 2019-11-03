@@ -63,7 +63,7 @@ elapsed time: 105.02632117271423 sec
 
 ### 1. Symbol representation
 
-NxN Integer Matrix를 상정한다. 이는 z3에서 지원하는 Sum operatoion을 이용하기 위함으로 보이며, 값을 0과 1로 한정되어야 하는 부분은 추후 Constraint에서 보충한다.
+NxN Integer Matrix를 상정한다. 이는 z3에서 지원하는 Sum operatoion을 이용하기 위함으로 보이며, 값이 0과 1로 한정되어야 하는 부분은 추후 Constraint를 통해 표현한다.
 
 ```py
 x = [[z3.Int(f'x_{row}_{col}')
@@ -142,7 +142,7 @@ elapsed time: 12.257997751235962 sec
 
 1. 8-Neighbor heuristic: in-and
 
-한점이 주어졌을 때, 해당 지점에 퀸이 있는 경우 주변 8칸에 퀸이 존재하지 않음을 imply 와 and로 표현. 이 때 셀 하나에 추가 constraint가 하나 발생함.
+한점이 주어졌을 때, 해당 지점에 퀸이 있는 경우 주변 8칸에 퀸이 존재하지 않음을 imply 와 and로 표현하였다. 이 때 셀 하나당 추가 constraint가 하나 발생한다.
 
 ```py
 z3.Implies(
@@ -213,7 +213,7 @@ elapsed time: 75.21825385093689 sec
 
 6. 4-Skipped neighbor
 
-기존의 Neighbor heuristic이 주변 한칸의 셀만 보았기에, 이번에는 window 크기를 두어 중심으로 부터 s칸 떨어진 상하좌우 방향의 4개 cell만을 확인하게 구현하였다.
+기존의 Neighbor heuristic이 주변 한칸의 셀만 보았기에, 이번에는 window 크기를 두어 중심으로 부터 s(=2)칸 떨어진 상하좌우 방향의 4개 cell만을 확인하게 구현하였다.
 
 결과 69초로, 주변 한칸의 셀을 보는 것이 더 효율적임을 알 수 있었다. 이는 추가 constraint 수에 따른 오버헤드와 constraint로 인해 early stopping이 가능해지는 순간의 교차점이 있었음을 알 수 있다.
 
@@ -227,7 +227,7 @@ elapsed time: 69.35773015022278 sec
 
 기존의 방법이 deterministic하게 neighbor을 결정하였다면, 이번에는 N개의 cell을 샘플링하여 해당 셀에 대해서만 neighbor heuristic을 적용하는 방식이다.
 
-4-Neighbor vertical-horizontal in-and 방식이다.
+4-Neighbor vertical-horizontal in-and 방식으로 구현하였다.
 
 RandomSeed 1024
 
