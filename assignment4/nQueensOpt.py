@@ -37,9 +37,9 @@ def main(argv):
     num_queens = int(input('N: '))
 
     if len(argv) > 1 and argv[1] == 'naive':
-            const_fn = constraint.naive_constraint
+        const_fn = constraint.naive_constraint
     elif len(argv) > 1 and argv[1] == 'default':
-            const_fn = constraint.default_constraint
+        const_fn = constraint.default_constraint
     else:
         const_fn = constraint.custom_constraint
     
