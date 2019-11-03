@@ -15,11 +15,10 @@ def timer(func):
 
 
 @timer
-def solve(num_queens):
+def solve(num_queens, const_fn):
     x = [[z3.Int(f'x_{row}_{col}') for col in range(num_queens)]
          for row in range(num_queens)]
-
-    const = constraint.naive_constraint(x, num_queens)
+    const = const_fn(x, num_queens)
 
     s = z3.Solver()
     s.add(const)
@@ -33,9 +32,17 @@ def solve(num_queens):
     return []
 
 
-def main(_):
+def main(argv):
     num_queens = int(input('N: '))
-    result, time = solve(num_queens)
+
+    if len(argv) > 1 and argv[1] == 'naive':
+            const_fn = constraint.naive_constraint
+    elif len(argv) > 1 and argv[1] == 'default':
+            const_fn = constraint.default_constraint
+    else:
+        const_fn = constraint.custom_constraint
+    
+    result, time = solve(num_queens, const_fn)
 
     print(result)
     print('elapsed time: {} sec'.format(time))
