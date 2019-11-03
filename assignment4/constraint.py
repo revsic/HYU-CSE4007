@@ -109,6 +109,19 @@ def neighbor_heuristic(x, num_queens, neighbor_fn):
     return const
 
 
+def random_neighbor_heuristic(x, num_queens, neighbor_fn):
+    const = []
+    for i in range(num_queens):
+        px = random.randint(0, num_queens - 1)
+        py = random.randint(0, num_queens - 1)
+        const.append(
+            z3.Implies(
+                x[px][py] == 1,
+                z3.And([x[nx][ny] == 0
+                        for nx, ny in neighbor_fn(px, py, num_queens)])))
+    return const
+
+
 def heuristic(x, num_queens):
     return []
 
